@@ -91,6 +91,7 @@ fi
 alias ll='ls -halF'
 alias la='ls -A'
 alias l='ls -CF'
+alias less='less -N'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -120,4 +121,15 @@ fi
 export JAVA_HOME=/usr/java/default
 
 # PATH
-export PATH=$JAVA_HOME/bin:$PATH
+export PATH=$HOME/eclipse:$HOME/scripts:$JAVA_HOME/bin:$PATH
+
+# Enable the **/* globstar
+shopt -s globstar
+
+# Conversion functions
+h2d(){
+    echo "ibase=16; $@"|bc
+}
+d2h(){
+    echo "obase=16; $@"|bc
+}

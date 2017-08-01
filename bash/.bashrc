@@ -56,10 +56,17 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# Git
+. ~/git/configs/git/git-completion.bash
+. ~/git/configs/git/git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUPSTREAM="auto verbose name"
+export PS1=$PS1'\[\033[1;35m\]$(__git_ps1 "(%s)")\[\033[00m\] '
+
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[1;35m\]$(__git_ps1 " (%s)")\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 "(%s)")\$ '
 fi
 unset color_prompt force_color_prompt
 

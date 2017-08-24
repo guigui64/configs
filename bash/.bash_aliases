@@ -16,3 +16,4 @@ alias cdobc='cd ~/workspace/obc'
 # JUICE
 alias juice='launch-eclipse.sh -v JUICE -w ~/workspaceJUICE/ $*'
 alias cdcdmu='cd ~/workspaceJUICE/cdmu'
+alias cdapl='cd ~/Documents/JUICE/APL'

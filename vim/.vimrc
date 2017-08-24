@@ -46,7 +46,7 @@ set encoding=utf-8
 
 " Whitespace
 set wrap
-set textwidth=90
+" set textwidth=90
 set formatoptions=tcqrn1
 set tabstop=4
 set shiftwidth=4
@@ -131,10 +131,10 @@ noremap + ddkP
 inoremap jk <esc>
 
 " Forget thoses keys!!
-nnoremap <up>       <nop>
-nnoremap <down>     <nop>
-nnoremap <right>    <nop>
-nnoremap <left>     <nop>
+" nnoremap <up>       <nop>
+" nnoremap <down>     <nop>
+" nnoremap <right>    <nop>
+" nnoremap <left>     <nop>
 
 " Abbreviations
 " used for auto-correcting typos in insert mode

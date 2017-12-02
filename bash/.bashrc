@@ -140,3 +140,8 @@ h2d(){
 d2h(){
     echo "obase=16; $@"|bc
 }
+
+# Go
+export GOPATH=$HOME/golang/nonstd
+export GOROOT=$HOME/golang/go
+export PATH=$GOROOT/bin:$PATH

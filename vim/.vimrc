@@ -18,12 +18,18 @@ noremap <C-t> :NERDTreeToggle<CR>
 " Turn on syntax highlighting
 syntax on
 
+" Write the content of the file automatically when building
+set autowrite
+
+" Pick a leader key : \ being the default one
+let mapleader = ","
+
 " Security
 set modelines=0
 
 " Show line numbers
 set number
-set relativenumber
+"set relativenumber
 function! ToggleNumbers()
     if (&relativenumber == 1)
         set nu
@@ -93,7 +99,10 @@ inoremap <F1> <ESC>:set invfullscreen<CR>a
 nnoremap <F1> :set invfullscreen<CR>
 vnoremap <F1> :set invfullscreen<CR>
 
-" Textmate holdouts
+" Quickfix
+map <C-l> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>c :cclose<CR>
 
 " Formatting
 noremap <leader>q gqip
@@ -118,9 +127,6 @@ colorscheme zenburn
 let g:airline_theme='zenburn'
 let g:airline_powerline_fonts=1
 
-" Pick a leader key : \ being the default one
-let mapleader = "_"
-
 " Maps
 nnoremap <leader>ev :split $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
@@ -131,10 +137,10 @@ noremap + ddkP
 inoremap jk <esc>
 
 " Forget thoses keys!!
-nnoremap <up>       <nop>
-nnoremap <down>     <nop>
-nnoremap <right>    <nop>
-nnoremap <left>     <nop>
+" nnoremap <up>       <nop>
+" nnoremap <down>     <nop>
+" nnoremap <right>    <nop>
+" nnoremap <left>     <nop>
 
 " Abbreviations
 " used for auto-correcting typos in insert mode
@@ -142,3 +148,22 @@ iabbrev adn     and
 iabbrev teh     the
 iabbrev uint    uint32_t
 iabbrev unint   uint32_t
+
+" Go
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+    let l:file = expand('%')
+    if l:file =~# '^\f\+_test\.go$'
+        call go#test#Test(0, 1)
+    elseif l:file =~# '^\f\+\.go$'
+        call go#cmd#Build(0)
+    endif
+endfunction
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>i  <Plug>(go-imports)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+let g:go_fmt_command = "goimports"
+let g:go_highlight_types = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1

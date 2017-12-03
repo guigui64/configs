@@ -136,6 +136,11 @@ noremap - ddp
 noremap + ddkP
 inoremap jk <esc>
 
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
+
 " Forget thoses keys!!
 " nnoremap <up>       <nop>
 " nnoremap <down>     <nop>

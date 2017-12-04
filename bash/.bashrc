@@ -158,3 +158,6 @@ export ANT_OPTS='-Dant.logger.defaults=$HOME/.ant-colors'
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# added by Anaconda3 installer
+#export PATH="/home/comte/anaconda3/bin:$PATH"

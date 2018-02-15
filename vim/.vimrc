@@ -1,6 +1,10 @@
 " Don't try to be vi compatible
 set nocompatible
 
+" Execute working directory .vimrc in a secure fashion
+set exrc
+set secure
+
 " Helps force plugins to load correctly when it is turned back on below
 filetype off
 

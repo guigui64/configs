@@ -18,3 +18,6 @@ alias juice='launch-eclipse.sh -v JUICE -w ~/workspaceJUICE/ $*'
 alias cdjuice='cd ~/workspaceJUICE'
 alias cdcdmu='cd ~/workspaceJUICE/cdmu'
 alias cdapl='cd ~/Documents/JUICE/APL'
+
+# Go
+alias cdgosrcs='cd golang/nonstd/src/github.com/guigui64/'

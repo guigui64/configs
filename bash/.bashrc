@@ -57,16 +57,16 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 # Git
-. ~/git/configs/git/git-completion.bash
-. ~/git/configs/git/git-prompt.sh
+. ~/configs/git/git-completion.bash
+. ~/configs/git/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWUPSTREAM="auto verbose name"
+export GIT_PS1_SHOWUPSTREAM=0
 export PS1=$PS1'\[\033[1;35m\]$(__git_ps1 "(%s)")\[\033[00m\] '
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[1;35m\]$(__git_ps1 " (%s)")\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[1;35m\]$(__git_ps1 "(%s)")\[\033[00m\]$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 "(%s)")\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\W$(__git_ps1 "(%s)")$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -126,6 +126,12 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# Use Vi style commands on the shell (in insert mode by defualt)
+set -o vi
+# switch back to emacs : set -o emacs
+# Clear screen with C-l also in insert mode
+bind -m vi-insert "\C-l":clear-screen
+
 # Java
 export JAVA_HOME=/usr/java/default
 
@@ -161,3 +167,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # added by Anaconda3 installer
 #export PATH="/home/comte/anaconda3/bin:$PATH"
+
+# Tmux
+. ~/configs/tmux/tmux-completion.bash

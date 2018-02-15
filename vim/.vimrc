@@ -138,7 +138,6 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 noremap - ddp
 " move one line up
 noremap + ddkP
-inoremap jk <esc>
 
 inoremap {      {}<Left>
 inoremap {<CR>  {<CR>}<Esc>O

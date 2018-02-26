@@ -157,6 +157,14 @@ iabbrev teh     the
 iabbrev uint    uint32_t
 iabbrev unint   uint32_t
 
+" map to <Leader>cf in C++ code
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+" Toggle auto formatting:
+nmap <Leader>C :ClangFormatAutoToggle<CR>
+" Auto-enable auto-formatting C files
+autocmd FileType c,cpp ClangFormatAutoEnable
+
 " Go
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()

@@ -56,13 +56,16 @@ set encoding=utf-8
 
 " Whitespace
 set wrap
-set textwidth=79
+" set textwidth=79
 set formatoptions=tcqrn1
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
 set noshiftround
+
+" Mouse
+set mouse=a
 
 " Cursor motion
 set scrolloff=3

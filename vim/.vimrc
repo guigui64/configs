@@ -1,39 +1,98 @@
-" Don't try to be vi compatible
-set nocompatible
+" my vimrc file - Guillaume Comte
+" inspired from Tim Pope sensible and Steve Losh 'Learn Vimscript the Hard Way'
+" lessons
 
-" Execute working directory .vimrc in a secure fashion
-set exrc
+" ### General settings ### {{{
+
+set nocompatible " Don't try to be vi compatible
+
+filetype off " Helps force plugins to load correctly when it is turned back on below
+" Plugins loading by tpope/vim-pathogen
+execute pathogen#infect()
+filetype plugin indent on
+
+syntax on " Turn on syntax highlighting
+
+set autowrite " Write the content of the file automatically when building
+
+set exrc " Execute working directory .vimrc in a secure fashion
 set secure
 
-" Helps force plugins to load correctly when it is turned back on below
-filetype off
+set number " Show line numbers
+set relativenumber
 
-" Load plugins here (vundle)
-execute pathogen#infect()
-:Helptags
+set ruler " Show file stats
+set laststatus=2 " Status bar
+set showmode " Last line
+set showcmd
+set wildmenu
+set visualbell " Blink cursor on error instead of beeping (grr)
 
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
+set encoding=utf-8 " Encoding
 
-" Map NERDTree to Ctrl+t
-noremap <C-t> :NERDTreeToggle<CR>
+set wrap
+set textwidth=79
+set formatoptions=cqrn1
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set noshiftround
 
-" Turn on syntax highlighting
-syntax on
+set mouse=a " Mouse
+set scrolloff=3 " Cursor motion
+set backspace=indent,eol,start
 
-" Write the content of the file automatically when building
-set autowrite
+set matchpairs+=<:> " use % to jump between pairs
+runtime! macros/matchit.vim
+
+set hidden " Allow hidden buffers
+
+set ttyfast " Rendering
+
+" Visualize tabs and newlines
+set listchars=tab:▸\ ,eol:¬
+set list " To enable by default
+" Toggle on/off listchars
+noremap <leader>l :set list!<CR>
 
 " Pick a leader key : \ being the default one
 let mapleader = ","
 
-" Security
-set modelines=0
+" }}}
 
-" Show line numbers
-set number
-"set relativenumber
+" Search settings {{{
+
+nnoremap / /\v
+vnoremap / /\v
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+" clear search
+noremap <leader><space> :let @/=''<cr>
+
+" }}}
+
+" Autocommand settings {{{
+
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+    autocmd FileType vim setlocal foldlevelstart=0
+augroup END
+
+" }}}
+
+" Mappings {{{
+
+" Move up/down display lines (rather than physical lines)
+nnoremap j gj
+nnoremap k gk
+
+noremap <leader>tt :NERDTreeToggle<CR>
+
 function! ToggleNumbers()
     if (&relativenumber == 1)
         set nu
@@ -45,67 +104,6 @@ function! ToggleNumbers()
 endfunc
 noremap <C-n> :call ToggleNumbers()<CR>
 
-" Show file stats
-set ruler
-
-" Blink cursor on error instead of beeping (grr)
-set visualbell
-
-" Encoding
-set encoding=utf-8
-
-" Whitespace
-set wrap
-" set textwidth=79
-set formatoptions=tcqrn1
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set noshiftround
-
-" Mouse
-set mouse=a
-
-" Cursor motion
-set scrolloff=3
-set backspace=indent,eol,start
-set matchpairs+=<:> " use % to jump between pairs
-runtime! macros/matchit.vim
-
-" Move up/down editor lines
-nnoremap j gj
-nnoremap k gk
-
-" Allow hidden buffers
-set hidden
-
-" Rendering
-set ttyfast
-
-" Status bar
-set laststatus=2
-
-" Last line
-set showmode
-set showcmd
-
-" Searching
-nnoremap / /\v
-vnoremap / /\v
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-set showmatch
-" clear search
-noremap <leader><space> :let @/=''<cr>
-
-" Remap help key.
-inoremap <F1> <ESC>:set invfullscreen<CR>a
-nnoremap <F1> :set invfullscreen<CR>
-vnoremap <F1> :set invfullscreen<CR>
-
 " Quickfix
 map <C-l> :cnext<CR>
 map <C-m> :cprevious<CR>
@@ -114,12 +112,45 @@ nnoremap <leader>c :cclose<CR>
 " Formatting
 noremap <leader>q gqip
 
-" Visualize tabs and newlines
-set listchars=tab:▸\ ,eol:¬
-" Uncomment this to enable by default:
-" set list " To enable by default
-" Or use your leader key + l to toggle on/off
-noremap <leader>l :set list!<CR>
+nnoremap <leader>ev :split $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+" move one line down
+noremap - ddp
+" move one line up
+noremap + ddkP
+
+inoremap {<CR>  {<CR>}<Esc>O
+
+" Forget thoses keys!!
+" nnoremap <up>       <nop>
+" nnoremap <down>     <nop>
+" nnoremap <right>    <nop>
+" nnoremap <left>     <nop>
+
+" autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+" autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+" " Toggle auto formatting:
+" nmap <Leader>C :ClangFormatAutoToggle<CR>
+" " Auto-enable auto-formatting C files
+" autocmd FileType c,cpp ClangFormatAutoEnable
+
+augroup filetype_c
+    autocmd!
+    autocmd BufWritePre,BufRead *.c,*.cpp,*.h,*.hpp :normal gg=G
+augroup END
+
+" }}}
+
+" Abbreviations {{{
+
+iabbrev adn     and
+iabbrev teh     the
+iabbrev uint    uint32_t
+iabbrev unint   uint32_t
+
+" }}}
+
+" Looks {{{
 
 " Color scheme (terminal)
 set t_Co=256
@@ -134,41 +165,12 @@ colorscheme zenburn
 let g:airline_theme='zenburn'
 let g:airline_powerline_fonts=1
 
-" Maps
-nnoremap <leader>ev :split $MYVIMRC<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
-" move one line down
-noremap - ddp
-" move one line up
-noremap + ddkP
+" }}}
 
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
+" Programming languages {{{
 
-" Forget thoses keys!!
-" nnoremap <up>       <nop>
-" nnoremap <down>     <nop>
-" nnoremap <right>    <nop>
-" nnoremap <left>     <nop>
+" Go {{{
 
-" Abbreviations
-" used for auto-correcting typos in insert mode
-iabbrev adn     and
-iabbrev teh     the
-iabbrev uint    uint32_t
-iabbrev unint   uint32_t
-
-" map to <Leader>cf in C++ code
-autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
-" Toggle auto formatting:
-nmap <Leader>C :ClangFormatAutoToggle<CR>
-" Auto-enable auto-formatting C files
-autocmd FileType c,cpp ClangFormatAutoEnable
-
-" Go
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
     let l:file = expand('%')
@@ -186,3 +188,8 @@ let g:go_fmt_command = "goimports"
 let g:go_highlight_types = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
+
+" }}}
+
+" }}}
+

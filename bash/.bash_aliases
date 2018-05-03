@@ -19,5 +19,9 @@ alias cdjuice='cd ~/workspaceJUICE'
 alias cdcdmu='cd ~/workspaceJUICE/cdmu'
 alias cdapl='cd ~/Documents/JUICE/APL'
 
+# OW
+alias oneweb='launch-eclipse.sh -v ONEWEB -w workspaceONEWEB/'
+alias cdow='cd ~/workspaceONEWEB'
+
 # Go
 alias cdgosrcs='cd golang/nonstd/src/github.com/guigui64/'

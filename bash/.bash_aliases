@@ -4,6 +4,9 @@ alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias mkdir='mkdir -pv'
 alias gg='gitg &'
 alias gototop='cd `git toplvl`'
+alias gs='git status'
+alias wgl='while (true) ; do clear ; git lga -n 15 ; sleep 5 ; done'
+alias wgs='while (true) ; do clear ; git status ; sleep 5 ; done'
 
 # SIMTG
 alias simgdb='for core in `ls -t core*`; do echo "### Debug with core : $core ###"; gdb /tools/simtg/simtg/Ubuntu_16.04/64bit/simtg_2.11.0/simtgCorba $core; break; done;'

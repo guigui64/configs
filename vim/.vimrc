@@ -83,6 +83,10 @@ augroup filetype_vim
     autocmd FileType vim setlocal foldlevelstart=0
 augroup END
 
+augroup templates
+    autocmd BufNewFile *.pl execute "0r ~/.vim/templates/skeleton.pl" | normal G
+augroup END
+
 " }}}
 
 " Mappings {{{
@@ -163,7 +167,7 @@ colorscheme zenburn
 
 " Airline config
 let g:airline_theme='zenburn'
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts=0
 
 " }}}
 

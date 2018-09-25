@@ -5,8 +5,10 @@ alias mkdir='mkdir -pv'
 alias gg='gitg &'
 alias gototop='cd `git toplvl`'
 alias gs='git status'
-alias wgl='while (true) ; do clear ; git lga -n 15 ; sleep 5 ; done'
-alias wgs='while (true) ; do clear ; git status ; sleep 5 ; done'
+alias gss='git status -s'
+alias gl='git lga'
+alias wg='while (true) ; do clear ; git lga -n 25 ; echo -e "\n\n====\n\n" ; git status -s | head -n 25 ; echo -n "Nb modified : " $(git status -s | wc -l) ; sleep 5 ; done'
+alias gd='git diff'
 
 # SIMTG
 alias simgdb='for core in `ls -t core*`; do echo "### Debug with core : $core ###"; gdb /tools/simtg/simtg/Ubuntu_16.04/64bit/simtg_2.11.0/simtgCorba $core; break; done;'
@@ -23,7 +25,7 @@ alias cdcdmu='cd ~/workspaceJUICE/cdmu'
 alias cdapl='cd ~/Documents/JUICE/APL'
 
 # OW
-alias oneweb='launch-eclipse.sh -v ONEWEB -w workspaceONEWEB/'
+alias oneweb='launch-eclipse.sh -v ONEWEB -w ~/workspaceONEWEB/'
 alias cdow='cd ~/workspaceONEWEB'
 
 # Go

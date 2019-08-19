@@ -1,6 +1,8 @@
 " my vimrc file - Guillaume Comte
 " inspired from Tim Pope sensible and Steve Losh 'Learn Vimscript the Hard Way'
 " lessons
+"
+" Use za to toggle folds
 
 " ### General settings ### {{{
 

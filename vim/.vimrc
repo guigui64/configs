@@ -28,15 +28,17 @@ set showcmd
 set wildmenu
 set visualbell " Blink cursor on error instead of beeping (grr)
 
+set path+=** " Search down recursively (for :find, completion etc.)
+
 set encoding=utf-8 " Encoding
 
 set wrap
 set textwidth=79
 set formatoptions=cqrn1
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set noexpandtab " use tabs
 set noshiftround
 
 set mouse=a " Mouse
@@ -154,16 +156,17 @@ iabbrev unint   uint32_t
 
 " Color scheme (terminal)
 set t_Co=256
-set background=dark
+set background=light
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 " put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
 " in ~/.vim/colors/ and uncomment:
-colorscheme zenburn
+"colorscheme zenburn
+colorscheme solarized
 
 " Airline config
 let g:airline_theme='zenburn'
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts=0
 
 " }}}
 

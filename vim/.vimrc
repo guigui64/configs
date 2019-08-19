@@ -1,6 +1,8 @@
 " my vimrc file - Guillaume Comte
 " inspired from Tim Pope sensible and Steve Losh 'Learn Vimscript the Hard Way'
 " lessons
+"
+" Use za to toggle folds
 
 " ### General settings ### {{{
 
@@ -28,15 +30,17 @@ set showcmd
 set wildmenu
 set visualbell " Blink cursor on error instead of beeping (grr)
 
+set path+=** " Search down recursively (for :find, completion etc.)
+
 set encoding=utf-8 " Encoding
 
 set wrap
 set textwidth=79
 set formatoptions=cqrn1
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set noexpandtab " use tabs
 set noshiftround
 
 set mouse=a " Mouse

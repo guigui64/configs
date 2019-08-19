@@ -158,15 +158,15 @@ iabbrev unint   uint32_t
 
 " Color scheme (terminal)
 set t_Co=256
-set background=dark
+set background=light
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 " put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
 " in ~/.vim/colors/ and uncomment:
-colorscheme zenburn
+colorscheme solarized
 
 " Airline config
-let g:airline_theme='zenburn'
+let g:airline_theme='solarized'
 let g:airline_powerline_fonts=0
 
 " }}}

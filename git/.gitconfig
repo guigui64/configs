@@ -14,3 +14,5 @@
 [user]
 	email = guillaume.comte@airbus.com
 	name = Guillaume Comte
+[fetch]
+	prune = true

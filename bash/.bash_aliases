@@ -10,3 +10,9 @@ functionCloneGithub() {
     git clone git@github.com:guigui64/$1
 }
 alias clgh='functionCloneGithub'
+alias gs='git status'
+alias gss='git status -s'
+alias gl='git lga'
+
+# Go
+alias cdgosrcs='cd golang/nonstd/src/github.com/guigui64/'

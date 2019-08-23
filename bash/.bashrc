@@ -137,7 +137,7 @@ bind -m vi-insert "\C-l":clear-screen
 export JAVA_HOME=/usr/java/default
 
 # PATH
-export PATH=$HOME/eclipse:$HOME/scripts:$JAVA_HOME/bin:$PATH
+export PATH=$HOME/eclipse:$HOME/git/scripts:$JAVA_HOME/bin:$PATH
 
 # Enable the **/* globstar
 shopt -s globstar
@@ -151,9 +151,12 @@ d2h(){
 }
 
 # Go
-export GOPATH=$HOME/golang/nonstd
-export GOROOT=$HOME/golang/go
-export PATH=$GOROOT/bin:$PATH
+#export GOPATH=$HOME/golang/nonstd
+#export GOROOT=$HOME/golang/go
+#export PATH=$GOROOT/bin:$PATH
 
 # Tmux
 . ${CONFIG_ROOT}/tmux/tmux-completion.bash
+# Install Ruby Gems to ~/gems
+#export GEM_HOME="$HOME/gems"
+#export PATH="$HOME/gems/bin:$PATH"

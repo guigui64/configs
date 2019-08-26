@@ -57,8 +57,8 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 # Git
-. ~/configs/git/git-completion.bash
-. ~/configs/git/git-prompt.sh
+. ~/git/configs/git/git-completion.bash
+. ~/git/configs/git/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUPSTREAM=0
 # export PS1=$PS1'\[\033[1;35m\]$(__git_ps1 "(%s)")\[\033[00m\] '
@@ -169,7 +169,7 @@ export NVM_DIR="$HOME/.nvm"
 #export PATH="/home/comte/anaconda3/bin:$PATH"
 
 # Tmux
-. ~/configs/tmux/tmux-completion.bash
+. ~/git/configs/tmux/tmux-completion.bash
 # Install Ruby Gems to ~/gems
 #export GEM_HOME="$HOME/gems"
 #export PATH="$HOME/gems/bin:$PATH"

@@ -56,9 +56,12 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# Configs path
+CONFIG_ROOT="$HOME/git/configs"
+
 # Git
-. ~/configs/git/git-completion.bash
-. ~/configs/git/git-prompt.sh
+. ${CONFIG_ROOT}/git/git-completion.bash
+. ${CONFIG_ROOT}/git/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUPSTREAM=0
 # export PS1=$PS1'\[\033[1;35m\]$(__git_ps1 "(%s)")\[\033[00m\] '
@@ -153,7 +156,7 @@ d2h(){
 #export PATH=$GOROOT/bin:$PATH
 
 # Tmux
-. ~/configs/tmux/tmux-completion.bash
+. ${CONFIG_ROOT}/tmux/tmux-completion.bash
 # Install Ruby Gems to ~/gems
 #export GEM_HOME="$HOME/gems"
 #export PATH="$HOME/gems/bin:$PATH"

@@ -7,8 +7,6 @@
 set nocompatible " Don't try to be vi compatible
 
 filetype off " Helps force plugins to load correctly when it is turned back on below
-" Plugins loading by tpope/vim-pathogen
-execute pathogen#infect()
 filetype plugin indent on
 
 syntax on " Turn on syntax highlighting
@@ -52,14 +50,14 @@ set hidden " Allow hidden buffers
 
 set ttyfast " Rendering
 
+" Pick a leader key : \ being the default one
+let mapleader = ","
+
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬
 set list " To enable by default
 " Toggle on/off listchars
 noremap <leader>l :set list!<CR>
-
-" Pick a leader key : \ being the default one
-let mapleader = ","
 
 " }}}
 
@@ -124,10 +122,10 @@ noremap + ddkP
 inoremap {<CR>  {<CR>}<Esc>O
 
 " Forget thoses keys!!
-" nnoremap <up>       <nop>
-" nnoremap <down>     <nop>
-" nnoremap <right>    <nop>
-" nnoremap <left>     <nop>
+nnoremap <up>       <nop>
+nnoremap <down>     <nop>
+nnoremap <right>    <nop>
+nnoremap <left>     <nop>
 
 " autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 " autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
@@ -165,7 +163,7 @@ let g:solarized_termtrans=1
 colorscheme solarized
 
 " Airline config
-let g:airline_theme='zenburn'
+let g:airline_theme='solarized'
 let g:airline_powerline_fonts=0
 
 " }}}
@@ -175,22 +173,22 @@ let g:airline_powerline_fonts=0
 " Go {{{
 
 " run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-    let l:file = expand('%')
-    if l:file =~# '^\f\+_test\.go$'
-        call go#test#Test(0, 1)
-    elseif l:file =~# '^\f\+\.go$'
-        call go#cmd#Build(0)
-    endif
-endfunction
-autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
-autocmd FileType go nmap <leader>i  <Plug>(go-imports)
-autocmd FileType go nmap <leader>t  <Plug>(go-test)
-let g:go_fmt_command = "goimports"
-let g:go_highlight_types = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
+" function! s:build_go_files()
+    " let l:file = expand('%')
+    " if l:file =~# '^\f\+_test\.go$'
+    "     call go#test#Test(0, 1)
+    " elseif l:file =~# '^\f\+\.go$'
+    "     call go#cmd#Build(0)
+    " endif
+" endfunction
+" autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+" autocmd FileType go nmap <leader>r  <Plug>(go-run)
+" autocmd FileType go nmap <leader>i  <Plug>(go-imports)
+" autocmd FileType go nmap <leader>t  <Plug>(go-test)
+" let g:go_fmt_command = "goimports"
+" let g:go_highlight_types = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
 
 " }}}
 

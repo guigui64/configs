@@ -1,0 +1,36 @@
+[submodule "vim/pack/plugins/start/vim-airline"]
+	path = vim/pack/plugins/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule "vim/pack/plugins/start/vim-airline-themes"]
+	path = vim/pack/plugins/start/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule "vim/pack/plugins/start/typescript-vim"]
+	path = vim/pack/plugins/start/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "vim/pack/plugins/start/vim-jsx-typescript"]
+	path = vim/pack/plugins/start/vim-jsx-typescript
+	url = https://github.com/peitalin/vim-jsx-typescript.git
+[submodule "vim/pack/plugins/start/vim-javascript"]
+	path = vim/pack/plugins/start/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "vim/pack/plugins/start/vim-jsx-pretty"]
+	path = vim/pack/plugins/start/vim-jsx-pretty
+	url = https://github.com/MaxMEllon/vim-jsx-pretty.git
+[submodule "vim/pack/plugins/start/vim-surround"]
+	path = vim/pack/plugins/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/pack/plugins/start/vim-fugitive"]
+	path = vim/pack/plugins/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/pack/plugins/start/vim-json"]
+	path = vim/pack/plugins/start/vim-json
+	url = https://github.com/elzr/vim-json.git
+[submodule "vim/pack/plugins/start/vim-sensible"]
+	path = vim/pack/plugins/start/vim-sensible
+	url = https://github.com/tpope/vim-sensible.git
+[submodule "vim/pack/plugins/start/nerdtree"]
+	path = vim/pack/plugins/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/pack/plugins/start/vim-commentary"]
+	path = vim/pack/plugins/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git

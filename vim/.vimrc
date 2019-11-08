@@ -87,6 +87,10 @@ augroup filetype_vim
     autocmd FileType vim setlocal foldlevelstart=0
 augroup END
 
+augroup templates
+    autocmd BufNewFile *.pl execute "0r ~/.vim/templates/skeleton.pl" | normal G
+augroup END
+
 " }}}
 
 " Mappings {{{
@@ -163,11 +167,10 @@ let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 " put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
 " in ~/.vim/colors/ and uncomment:
-"colorscheme zenburn
 colorscheme solarized
 
 " Airline config
-let g:airline_theme='zenburn'
+let g:airline_theme='solarized'
 let g:airline_powerline_fonts=0
 
 " }}}

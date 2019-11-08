@@ -12,5 +12,7 @@
 [push]
 	default = simple
 [user]
-	email = guillaume.comte10@gmail.com
-	name = guigui64
+	email = guillaume.comte@airbus.com
+	name = Guillaume Comte
+[fetch]
+	prune = true

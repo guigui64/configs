@@ -56,6 +56,9 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# Detect work environment
+[[ -f ~/work-env ]] && export WORKENV=true
+
 # Git
 . ~/git/configs/git/git-completion.bash
 . ~/git/configs/git/git-prompt.sh
@@ -100,7 +103,6 @@ fi
 alias ll='ls -halF'
 alias la='ls -A'
 alias l='ls -CF'
-alias less='less -N'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

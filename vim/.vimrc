@@ -32,6 +32,8 @@ set visualbell " Blink cursor on error instead of beeping (grr)
 
 set path+=** " Search down recursively (for :find, completion etc.)
 
+set rtp+=~/.fzf " Add fzf plugin to runtimepath
+
 set encoding=utf-8 " Encoding
 
 set wrap
@@ -99,7 +101,11 @@ augroup END
 nnoremap j gj
 nnoremap k gk
 
+" tree
 noremap <leader>tt :NERDTreeToggle<CR>
+
+" save
+nnoremap <leader>s :update<CR>
 
 function! ToggleNumbers()
     if (&relativenumber == 1)
@@ -120,20 +126,26 @@ nnoremap <leader>c :cclose<CR>
 " Formatting
 noremap <leader>q gqip
 
+" vimrc
 nnoremap <leader>ev :split $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
+
 " move one line down
 noremap - ddp
 " move one line up
 noremap + ddkP
 
+" term
+nnoremap <leader>tb :below terminal ++rows=10<CR>
+
+" auto }
 inoremap {<CR>  {<CR>}<Esc>O
 
 " Forget thoses keys!!
-" nnoremap <up>       <nop>
-" nnoremap <down>     <nop>
-" nnoremap <right>    <nop>
-" nnoremap <left>     <nop>
+nnoremap <up>       <nop>
+nnoremap <down>     <nop>
+nnoremap <right>    <nop>
+nnoremap <left>     <nop>
 
 " autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 " autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>

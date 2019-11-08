@@ -1,2 +1,2 @@
-set guifont=Source\ Code\ Pro\ for\ Powerline\ 9
-set lines=38 columns=114
+set guifont=Liberation\ Mono\ Regular\ 9
+set lines=56 columns=170

@@ -83,6 +83,21 @@ augroup filetype_vim
     autocmd FileType vim setlocal foldlevelstart=0
 augroup END
 
+" Auto source .vimrc file when edited
+autocmd! BufWritePost .vimrc source %
+
+" autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+" autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+" " Toggle auto formatting:
+" nmap <Leader>C :ClangFormatAutoToggle<CR>
+" " Auto-enable auto-formatting C files
+" autocmd FileType c,cpp ClangFormatAutoEnable
+
+augroup filetype_c
+    autocmd!
+    autocmd BufWritePre,BufRead *.c,*.cpp,*.h,*.hpp :normal gg=G
+augroup END
+
 " }}}
 
 " Mappings {{{
@@ -113,7 +128,7 @@ nnoremap <leader>c :cclose<CR>
 noremap <leader>q gqip
 
 nnoremap <leader>ev :split $MYVIMRC<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
+
 " move one line down
 noremap - ddp
 " move one line up
@@ -127,17 +142,11 @@ nnoremap <down>     <nop>
 nnoremap <right>    <nop>
 nnoremap <left>     <nop>
 
-" autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-" autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
-" " Toggle auto formatting:
-" nmap <Leader>C :ClangFormatAutoToggle<CR>
-" " Auto-enable auto-formatting C files
-" autocmd FileType c,cpp ClangFormatAutoEnable
+" toggle background
+noremap <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
-augroup filetype_c
-    autocmd!
-    autocmd BufWritePre,BufRead *.c,*.cpp,*.h,*.hpp :normal gg=G
-augroup END
+" save with leader S
+noremap <leader>s :update<CR>
 
 " }}}
 
@@ -147,24 +156,6 @@ iabbrev adn     and
 iabbrev teh     the
 iabbrev uint    uint32_t
 iabbrev unint   uint32_t
-
-" }}}
-
-" Looks {{{
-
-" Color scheme (terminal)
-set t_Co=256
-set background=light
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-" put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
-" in ~/.vim/colors/ and uncomment:
-"colorscheme zenburn
-colorscheme solarized
-
-" Airline config
-let g:airline_theme='solarized'
-let g:airline_powerline_fonts=0
 
 " }}}
 
@@ -191,6 +182,35 @@ let g:airline_powerline_fonts=0
 " let g:go_highlight_methods = 1
 
 " }}}
+
+" }}}
+
+" Looks {{{
+
+" Why does it not work ???
+" Show extra whitespace
+" MUST be insterted before color scheme !
+" autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+" match ExtraWhitespace /\s\+$/
+" autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+" autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+" autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+" autocmd BufWinLeave * call clearmatches()
+
+" Color scheme (terminal)
+set t_Co=256
+set background=light
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+" put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
+" in ~/.vim/colors/ and uncomment:
+"colorscheme zenburn
+colorscheme solarized
+
+" Airline config
+let g:airline_theme='solarized'
+let g:airline_powerline_fonts=0
+" let g:airline#extensions#tabline#enabled=1
 
 " }}}
 

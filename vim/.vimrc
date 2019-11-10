@@ -28,6 +28,8 @@ set visualbell " Blink cursor on error instead of beeping (grr)
 
 set path+=** " Search down recursively (for :find, completion etc.)
 
+set runtimepath+=~/.fzf
+
 set encoding=utf-8 " Encoding
 
 set wrap
@@ -78,9 +80,9 @@ noremap <leader><space> :let @/=''<cr>
 " Autocommand settings {{{
 
 augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-    autocmd FileType vim setlocal foldlevelstart=0
+	autocmd!
+	autocmd FileType vim setlocal foldmethod=marker
+	autocmd FileType vim setlocal foldlevelstart=0
 augroup END
 
 " Auto source .vimrc file when edited
@@ -94,8 +96,8 @@ autocmd! BufWritePost .vimrc source %
 " autocmd FileType c,cpp ClangFormatAutoEnable
 
 augroup filetype_c
-    autocmd!
-    autocmd BufWritePre,BufRead *.c,*.cpp,*.h,*.hpp :normal gg=G
+	autocmd!
+	autocmd BufWritePre,BufRead *.c,*.cpp,*.h,*.hpp :normal gg=G
 augroup END
 
 " }}}
@@ -109,13 +111,13 @@ nnoremap k gk
 noremap <leader>tt :NERDTreeToggle<CR>
 
 function! ToggleNumbers()
-    if (&relativenumber == 1)
-        set nu
-        set nornu
-    else
-        set nu
-        set rnu
-    endif
+	if (&relativenumber == 1)
+		set nu
+		set nornu
+	else
+		set nu
+		set rnu
+	endif
 endfunc
 noremap <C-n> :call ToggleNumbers()<CR>
 
@@ -126,8 +128,11 @@ nnoremap <leader>c :cclose<CR>
 
 " Formatting
 noremap <leader>q gqip
+noremap <F5> mzgggqG`z
 
+" Vimrc
 nnoremap <leader>ev :split $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " move one line down
 noremap - ddp
@@ -147,6 +152,8 @@ noremap <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" 
 
 " save with leader S
 noremap <leader>s :update<CR>
+" prevent jedi-vim to override it
+let g:jedi#goto_stubs_command="<leader>js"
 
 " }}}
 
@@ -165,12 +172,12 @@ iabbrev unint   uint32_t
 
 " run :GoBuild or :GoTestCompile based on the go file
 " function! s:build_go_files()
-    " let l:file = expand('%')
-    " if l:file =~# '^\f\+_test\.go$'
-    "     call go#test#Test(0, 1)
-    " elseif l:file =~# '^\f\+\.go$'
-    "     call go#cmd#Build(0)
-    " endif
+" let l:file = expand('%')
+" if l:file =~# '^\f\+_test\.go$'
+"     call go#test#Test(0, 1)
+" elseif l:file =~# '^\f\+\.go$'
+"     call go#cmd#Build(0)
+" endif
 " endfunction
 " autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 " autocmd FileType go nmap <leader>r  <Plug>(go-run)
@@ -180,6 +187,21 @@ iabbrev unint   uint32_t
 " let g:go_highlight_types = 1
 " let g:go_highlight_functions = 1
 " let g:go_highlight_methods = 1
+
+" }}}
+
+" Javascript/Typescript{{{
+
+" FORMATTERS
+au FileType javascript setlocal formatprg=prettier
+au FileType javascript.jsx setlocal formatprg=prettier
+au! BufRead,BufNewFile *.json set filetype=json
+au FileType json setlocal formatprg=prettier
+au FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+au FileType typescript.tsx setlocal formatprg=prettier\ --parser\ typescript
+au FileType html setlocal formatprg=js-beautify\ --type\ html
+au FileType scss setlocal formatprg=prettier\ --parser\ css
+au FileType css setlocal formatprg=prettier\ --parser\ css
 
 " }}}
 
@@ -214,3 +236,15 @@ let g:airline_powerline_fonts=0
 
 " }}}
 
+" Language Servers {{{
+
+let g:LanguageClient_serverCommands = {
+	\ 'javascript': ['javascript-typescript-stdio'],
+	\ 'javascript.jsx': ['javascript-typescript-stdio'],
+	\ 'typescript': ['javascript-typescript-stdio'],
+	\ 'typescript.tsx': ['javascript-typescript-stdio']
+	\ }
+
+nnoremap <F6> :call LanguageClient_contextMenu()<CR>
+
+" }}}

@@ -1,6 +1,8 @@
 " my vimrc file - Guillaume Comte
 " inspired from Tim Pope sensible and Steve Losh 'Learn Vimscript the Hard Way'
 " lessons
+"
+" Use za to toggle folds
 
 " ### General settings ### {{{
 
@@ -100,6 +102,10 @@ augroup filetype_c
 	autocmd BufWritePre,BufRead *.c,*.cpp,*.h,*.hpp :normal gg=G
 augroup END
 
+augroup templates
+    autocmd BufNewFile *.pl execute "0r ~/.vim/templates/skeleton.pl" | normal G
+augroup END
+
 " }}}
 
 " Mappings {{{
@@ -108,7 +114,11 @@ augroup END
 nnoremap j gj
 nnoremap k gk
 
+" tree
 noremap <leader>tt :NERDTreeToggle<CR>
+
+" save
+nnoremap <leader>s :update<CR>
 
 function! ToggleNumbers()
 	if (&relativenumber == 1)
@@ -130,7 +140,7 @@ nnoremap <leader>c :cclose<CR>
 noremap <leader>q gqip
 noremap <F5> mzgggqG`z
 
-" Vimrc
+" vimrc
 nnoremap <leader>ev :split $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
@@ -139,6 +149,10 @@ noremap - ddp
 " move one line up
 noremap + ddkP
 
+" term
+nnoremap <leader>tb :below terminal ++rows=10<CR>
+
+" auto }
 inoremap {<CR>  {<CR>}<Esc>O
 
 " Forget thoses keys!!
@@ -226,7 +240,6 @@ let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 " put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
 " in ~/.vim/colors/ and uncomment:
-"colorscheme zenburn
 colorscheme solarized
 
 " Airline config

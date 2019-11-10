@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=1000000
+HISTFILESIZE=2000000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -43,7 +43,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -62,6 +62,10 @@ CONFIG_ROOT="$HOME/git/configs"
 # Git
 . ${CONFIG_ROOT}/git/git-completion.bash
 . ${CONFIG_ROOT}/git/git-prompt.sh
+
+# Detect work environment
+[[ -f ~/work-env ]] && export WORKENV=true
+
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUPSTREAM=0
 # export PS1=$PS1'\[\033[1;35m\]$(__git_ps1 "(%s)")\[\033[00m\] '
@@ -85,13 +89,15 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    alias ls='ls --color=auto --group-directories-first'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+else
+    alias ls='ls --group-directories-first'
 fi
 
 # colored GCC warnings and errors
@@ -101,7 +107,6 @@ fi
 alias ll='ls -halF'
 alias la='ls -A'
 alias l='ls -CF'
-alias less='less -N'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -155,10 +160,26 @@ d2h(){
 #export GOROOT=$HOME/golang/go
 #export PATH=$GOROOT/bin:$PATH
 
+# CORE
+ulimit -c unlimited
+
+# ANT
+export ANT_ARGS='-logger org.apache.tools.ant.listener.AnsiColorLogger'
+export ANT_OPTS='-Dant.logger.defaults=$HOME/.ant-colors'
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# added by Anaconda3 installer
+#export PATH="/home/comte/anaconda3/bin:$PATH"
+
 # Tmux
 . ${CONFIG_ROOT}/tmux/tmux-completion.bash
 # Install Ruby Gems to ~/gems
 #export GEM_HOME="$HOME/gems"
 #export PATH="$HOME/gems/bin:$PATH"
 
+# fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+

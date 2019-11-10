@@ -169,6 +169,11 @@ noremap <leader>s :update<CR>
 " prevent jedi-vim to override it
 let g:jedi#goto_stubs_command="<leader>js"
 
+" fzf find files, mappings, buffers etc.
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fm :Maps<CR>
+nnoremap <leader>fb :Buffers<CR>
+
 " }}}
 
 " Abbreviations {{{

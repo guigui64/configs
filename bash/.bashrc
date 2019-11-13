@@ -142,7 +142,7 @@ bind -m vi-insert "\C-l":clear-screen
 export JAVA_HOME=/usr/java/default
 
 # PATH
-export PATH=$HOME/eclipse:$HOME/git/scripts:$JAVA_HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/eclipse:$HOME/git/scripts:$JAVA_HOME/bin:$PATH
 
 # Enable the **/* globstar
 shopt -s globstar
@@ -182,4 +182,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Finally some joke to begin the shell laughing ;)
+hash pyjoke && pyjoke
 

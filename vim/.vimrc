@@ -54,6 +54,10 @@ set hidden " Allow hidden buffers
 
 set ttyfast " Rendering
 
+" Persistent undo
+set undofile
+set undodir=~/.vim/undodir
+
 " Pick a leader key : \ being the default one
 let mapleader = ","
 

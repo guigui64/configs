@@ -97,10 +97,10 @@ autocmd! BufWritePost .vimrc source %
 " " Auto-enable auto-formatting C files
 " autocmd FileType c,cpp ClangFormatAutoEnable
 
-augroup filetype_c
-	autocmd!
-	autocmd BufWritePre,BufRead *.c,*.cpp,*.h,*.hpp :normal gg=G
-augroup END
+" augroup filetype_c
+" 	autocmd!
+" 	autocmd BufWritePre,BufRead *.c,*.cpp,*.h,*.hpp :normal gg=G
+" augroup END
 
 augroup templates
     autocmd BufNewFile *.pl execute "0r ~/.vim/templates/skeleton.pl" | normal G

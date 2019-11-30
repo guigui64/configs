@@ -243,18 +243,25 @@ au FileType css setlocal formatprg=prettier\ --parser\ css
 " autocmd BufWinLeave * call clearmatches()
 
 " Color scheme (terminal)
-set t_Co=256
-set background=light
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
+" set t_Co=256
+set background=dark
+" let g:solarized_termcolors=256
+" let g:solarized_termtrans=1
 " put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
 " in ~/.vim/colors/ and uncomment:
-colorscheme solarized
+" colorscheme solarized
+let g:gruvbox_italic=1
+colorscheme gruvbox
+" needed for full gruvbox support ('true color')
+if !exists('$TMUX')
+	set termguicolors
+endif
 
 " Airline config
-let g:airline_theme='solarized'
+let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=0
 " let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#ale#enabled=1
 
 " }}}
 
@@ -270,3 +277,4 @@ let g:LanguageClient_serverCommands = {
 nnoremap <F6> :call LanguageClient_contextMenu()<CR>
 
 " }}}
+

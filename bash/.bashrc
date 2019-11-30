@@ -64,7 +64,7 @@ CONFIG_ROOT="$HOME/git/configs"
 . ${CONFIG_ROOT}/git/git-prompt.sh
 
 # Detect work environment
-[[ -f ~/work-env ]] && export WORKENV=true
+[[ -f ~/.work-env ]] && export WORKENV=true
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUPSTREAM=0

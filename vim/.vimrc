@@ -43,6 +43,7 @@ set softtabstop=2
 set noexpandtab " use tabs
 set noshiftround
 
+set ttymouse=xterm2 " For mouse in tmux
 set mouse=a " Mouse
 set scrolloff=3 " Cursor motion
 set backspace=indent,eol,start

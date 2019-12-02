@@ -50,3 +50,9 @@
 [submodule "vim/pack/plugins/start/vim-isort"]
 	path = vim/pack/plugins/start/vim-isort
 	url = https://github.com/fisadev/vim-isort.git
+[submodule "vim/pack/plugins/start/gruvbox"]
+	path = vim/pack/plugins/start/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
+[submodule "vim/pack/plugins/start/vim-obsession"]
+	path = vim/pack/plugins/start/vim-obsession
+	url = https://github.com/tpope/vim-obsession.git

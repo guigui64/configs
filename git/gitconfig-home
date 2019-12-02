@@ -7,6 +7,7 @@
 	toplvl = rev-parse --show-toplevel
 	lga = log --graph --decorate --oneline --all
 	lgs = log --graph --decorate --oneline
+	cam = commit -am
 [core]
 	editor = vim
 [push]

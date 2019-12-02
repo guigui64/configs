@@ -25,6 +25,7 @@ set ruler " Show file stats
 set laststatus=2 " Status bar
 set showmode " Last line
 set showcmd
+set wildmode=longest,list,full
 set wildmenu
 set visualbell " Blink cursor on error instead of beeping (grr)
 

@@ -5,7 +5,7 @@ alias mkdir='mkdir -pv'
 alias lessn='less -N'
 alias asl='awk '\''{ print $NF }'\'' | sed '\''s/*//'\'' | xargs less'
 alias clock='tty-clock -sc -C 6'
-alias wtree="while true; do clear ; tree -I 'generation|bin|build|__pycache__|node_modules' ; sleep 5 ; done"
+alias wtree="while true; do clear ; tree -a -I 'generation|bin|build|__pycache__|node_modules|.git|*.swp' ; sleep 5 ; done"
 
 # Clipboard
 alias pbcopy='xclip -selection clipboard'

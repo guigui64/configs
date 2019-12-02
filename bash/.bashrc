@@ -184,5 +184,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Finally some joke to begin the shell laughing ;)
-hash pyjoke && pyjoke
+hash pyjoke 2> /dev/null && pyjoke
 

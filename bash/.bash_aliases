@@ -5,6 +5,10 @@ alias mkdir='mkdir -pv'
 alias lessn='less -N'
 alias asl='awk '\''{ print $NF }'\'' | sed '\''s/*//'\'' | xargs less'
 
+# Clipboard
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
 # GIT
 alias gg='gitg &'
 alias gs='git status'
@@ -17,7 +21,7 @@ alias clgh='functionCloneGithub'
 alias gs='git status'
 alias gss='git status -s'
 alias gl='git lga'
-alias wg='while (true) ; do clear ; git lga -n 25 ; echo -e "\n\n====\n\n" ; git status -s | grep -v smp2 | grep -v roject > /tmp/wg ; head -n 25 /tmp/wg ; echo -n "Nb modified : "$(cat /tmp/wg | wc -l)" ("$(git status -s | wc -l)")" ; sleep 5 ; done'
+alias wg='while (true) ; do clear ; git lga -n 20 ; echo -e "\n\n====\n\n" ; git status -s | grep -v smp2 | grep -v roject > /tmp/wg ; head -n 25 /tmp/wg ; echo -n "Nb modified : "$(cat /tmp/wg | wc -l)" ("$(git status -s | wc -l)")" ; sleep 5 ; done'
 alias wgl='while (true) ; do clear ; git lga -n 15 ; sleep 5 ; done'
 alias wgs='while (true) ; do clear ; git status ; sleep 5 ; done'
 alias gss='git status -s'

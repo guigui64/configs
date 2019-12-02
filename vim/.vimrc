@@ -44,6 +44,7 @@ set noexpandtab " use tabs
 set noshiftround
 
 set mouse=a " Mouse
+let g:NERDTreeMouseMode=3
 set scrolloff=3 " Cursor motion
 set backspace=indent,eol,start
 
@@ -177,6 +178,9 @@ let g:jedi#goto_stubs_command="<leader>js"
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fm :Maps<CR>
 nnoremap <leader>fb :Buffers<CR>
+
+" new tab
+nnoremap <leader>tn :tabnew<CR>
 
 " }}}
 

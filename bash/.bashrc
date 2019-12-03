@@ -183,6 +183,9 @@ export NVM_DIR="$HOME/.nvm"
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# Add my Python to PATH
+[[ $WORKENV ]] && export PATH=$HOME/python-3.6.9/bin:$PATH
+
 # Finally some joke to begin the shell laughing ;)
 hash pyjoke 2> /dev/null && pyjoke
 

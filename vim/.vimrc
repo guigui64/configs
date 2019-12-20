@@ -19,7 +19,7 @@ set exrc " Execute working directory .vimrc in a secure fashion
 set secure
 
 set number " Show line numbers
-set relativenumber
+set norelativenumber
 
 set ruler " Show file stats
 set laststatus=2 " Status bar

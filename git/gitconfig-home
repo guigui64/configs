@@ -20,3 +20,7 @@
 	prune = true
 [commit]
 	gpgsign = true
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff

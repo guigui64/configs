@@ -180,6 +180,7 @@ let g:jedi#goto_stubs_command="<leader>js"
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fm :Maps<CR>
 nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>ft :Tags<CR>
 
 " new tab
 nnoremap <leader>tn :tabnew<CR>

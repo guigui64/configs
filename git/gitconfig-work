@@ -24,3 +24,7 @@
 	program = gpg2
 [credential]
 	helper = cache
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff

@@ -21,6 +21,9 @@ set secure
 set number " Show line numbers
 set norelativenumber
 
+set cursorline " Show current line
+set cursorlineopt=number " Only highlight the current line number
+
 set ruler " Show file stats
 set laststatus=2 " Status bar
 set showmode " Last line

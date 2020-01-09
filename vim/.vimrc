@@ -179,6 +179,9 @@ noremap <leader>s :update<CR>
 " prevent jedi-vim to override it
 let g:jedi#goto_stubs_command="<leader>js"
 
+" save without format or any aucmd
+noremap <leader>zs :noa w<CR>
+
 " fzf find files, mappings, buffers etc.
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fm :Maps<CR>

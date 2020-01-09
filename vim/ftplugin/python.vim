@@ -15,3 +15,5 @@ augroup pyfmt
 	autocmd BufWritePre *.py execute ':Isort'
 augroup END
 
+" Go to outline like
+nnoremap <leader>o /def 

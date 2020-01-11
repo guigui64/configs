@@ -186,6 +186,9 @@ export NVM_DIR="$HOME/.nvm"
 # Add my Python to PATH
 [[ $WORKENV ]] && export PATH=$HOME/python-3.6.9/bin:$PATH
 
+# Pipenv completion
+eval "$(pipenv --completion)"
+
 # Finally some joke to begin the shell laughing ;)
 hash pyjoke 2> /dev/null && pyjoke
 

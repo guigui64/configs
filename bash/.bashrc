@@ -71,9 +71,9 @@ export GIT_PS1_SHOWUPSTREAM=0
 # export PS1=$PS1'\[\033[1;35m\]$(__git_ps1 "(%s)")\[\033[00m\] '
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\W\[\033[1;35m\]$(__git_ps1 "(%s)")\[\033[00m\]$ '
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]$(_shortpath $PWD)\[\033[1;35m\]$(__git_ps1 "(%s)")\[\033[00m\]$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\W$(__git_ps1 "(%s)")$ '
+	PS1='${debian_chroot:+($debian_chroot)}$(_shortpath $PWD)$(__git_ps1 "(%s)")$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -117,9 +117,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+[ -f ~/.bash_aliases ] && source ~/.bash_aliases
+[ -f ~/.bash_functions ] && source ~/.bash_functions
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

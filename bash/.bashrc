@@ -143,6 +143,10 @@ export JAVA_HOME=/usr/java/default
 # PATH
 export PATH=$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/eclipse:$HOME/git/scripts:$JAVA_HOME/bin:$PATH
 
+# VIM
+export VISUAL=vim
+export EDITOR=vim
+
 # Enable the **/* globstar
 shopt -s globstar
 

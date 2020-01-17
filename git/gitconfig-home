@@ -8,6 +8,7 @@
 	lga = log --graph --decorate --oneline --all
 	lgs = log --graph --decorate --oneline
 	cam = commit -am
+	changelog = log --format=%s --reverse
 [core]
 	editor = vim
 [push]

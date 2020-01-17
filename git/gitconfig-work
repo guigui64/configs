@@ -8,6 +8,7 @@
 	toplvl = rev-parse --show-toplevel
 	lga = log --graph --decorate --oneline --all
 	lgs = log --graph --decorate --oneline
+	changelog = log --format=%s --reverse
 [core]
 	editor = vim
 [push]

@@ -40,20 +40,4 @@ if [ ! -z $WORKENV ] ; then
 	alias simtgCorbaPids='ps x | grep simtgCorba | grep -v grep | awk "{ print $1 }"'
 	alias sourceSimtgEnv='. ~/git/scripts/envSimTG.sh'
 
-	# OBC
-	alias cdobc='cd ~/workspace/obc'
-
-	# JUICE
-	alias juice='launch-eclipse.sh -v JUICE -w ~/workspaceJUICE/'
-	alias cdjuice='cd ~/workspaceJUICE'
-	alias cdcdmu='cd ~/workspaceJUICE/cdmu'
-	alias cdapl='cd ~/Documents/JUICE/APL'
-
-	# OW
-	alias oneweb='launch-eclipse.sh -v ONEWEB -w ~/workspaceONEWEB/'
-	alias cdow='cd ~/workspaceONEWEB'
-
-	# ENEO
-	alias eneo='launch-eclipse.sh -v ENEO -w ~/workspaceENEO/'
-
 fi

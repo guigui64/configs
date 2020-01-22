@@ -186,11 +186,6 @@ export NVM_DIR="$HOME/.nvm"
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# Add my Python to PATH
-[[ $WORKENV ]] && \
-	export PATH=$HOME/python-3.6.9/bin:$PATH && \
-	export LD_LIBRARY_PATH=$HOME/python-3.6.9/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-
 # Pipenv completion
 eval "$(pipenv --completion)"
 

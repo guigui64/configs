@@ -127,6 +127,9 @@ nnoremap k gk
 " tree
 noremap <leader>tt :NERDTreeToggle<CR>
 
+" tagbar
+noremap <leader>tgb :TagbarToggle<CR>
+
 " save
 nnoremap <leader>s :update<CR>
 

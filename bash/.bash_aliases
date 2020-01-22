@@ -1,6 +1,7 @@
 alias df='df -Th --total'
 alias du='du -h'
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias psmem="ps -o pid,user,%mem,command ax | sort -b -k3 -r -n"
 alias mkdir='mkdir -pv'
 alias lessn='less -N'
 alias asl='awk '\''{ print $NF }'\'' | sed '\''s/*//'\'' | xargs less'

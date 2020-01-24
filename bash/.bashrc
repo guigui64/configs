@@ -190,5 +190,4 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(pipenv --completion)"
 
 # Finally some joke to begin the shell laughing ;)
-hash pyjoke 2> /dev/null && pyjoke
-
+# hash pyjoke 2> /dev/null && pyjoke

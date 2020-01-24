@@ -16,6 +16,7 @@ alias pbpaste='xclip -selection clipboard -o'
 alias gg='gitg &'
 alias gs='git status'
 alias gss='git status -s'
+alias gsss='git status -s | grep -v smp2 | grep -v roject > /tmp/wg ; head -n 25 /tmp/wg ; echo "Nb modified : "$(cat /tmp/wg | wc -l)" ("$(git status -s | wc -l)")"'
 alias gl='git lga'
 alias gd='git diff'
 alias gototop='cd `git toplvl`'
@@ -23,7 +24,7 @@ functionCloneGithub() {
     git clone git@github.com:guigui64/$1
 }
 alias clgh='functionCloneGithub'
-alias wg='while (true) ; do clear ; git lga -n 15 ; echo -e "\n====\n" ; git status -s | grep -v smp2 | grep -v roject > /tmp/wg ; head -n 25 /tmp/wg ; echo -n "Nb modified : "$(cat /tmp/wg | wc -l)" ("$(git status -s | wc -l)")" ; sleep 5 ; done'
+alias wg='while (true) ; do clear ; git lga -n 20 ; echo === ; git diff --shortstat ; sleep 5 ; done'
 alias wgl='while (true) ; do clear ; git lga -n 15 ; sleep 5 ; done'
 alias wgs='while (true) ; do clear ; git status ; sleep 5 ; done'
 alias gka='gitk --all'

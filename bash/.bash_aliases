@@ -24,7 +24,7 @@ functionCloneGithub() {
     git clone git@github.com:guigui64/$1
 }
 alias clgh='functionCloneGithub'
-alias wg='while (true) ; do clear ; git lga -n 20 ; echo === ; git diff --shortstat ; sleep 5 ; done'
+alias wg='while (true) ; do clear ; git lga -n 16 ; echo === ; gsss ; sleep 5 ; done'
 alias wgl='while (true) ; do clear ; git lga -n 15 ; sleep 5 ; done'
 alias wgs='while (true) ; do clear ; git status ; sleep 5 ; done'
 alias gka='gitk --all'

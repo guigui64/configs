@@ -141,7 +141,7 @@ bind -m vi-insert "\C-l":clear-screen
 export JAVA_HOME=/usr/java/default
 
 # PATH
-export PATH=$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/eclipse:$HOME/git/scripts:$JAVA_HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/git/scripts:$JAVA_HOME/bin:$PATH
 
 # VIM
 export VISUAL=vim
@@ -188,6 +188,9 @@ export NVM_DIR="$HOME/.nvm"
 
 # Pipenv completion
 eval "$(pipenv --completion)"
+
+# Add Rust to PATH
+[ -f ~/$HOME/.cargo/env ] && source $HOME/.cargo/env
 
 # Finally some joke to begin the shell laughing ;)
 # hash pyjoke 2> /dev/null && pyjoke

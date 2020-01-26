@@ -60,7 +60,6 @@ fi
 CONFIG_ROOT="$HOME/git/configs"
 
 # Git
-. ${CONFIG_ROOT}/git/git-completion.bash
 . ${CONFIG_ROOT}/git/git-prompt.sh
 
 # Detect work environment
@@ -71,9 +70,9 @@ export GIT_PS1_SHOWUPSTREAM=0
 # export PS1=$PS1'\[\033[1;35m\]$(__git_ps1 "(%s)")\[\033[00m\] '
 
 if [ "$color_prompt" = yes ]; then
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]$(_shortpath $PWD)\[\033[1;35m\]$(__git_ps1 "(%s)")\[\033[00m\]$ '
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]$(_shortpath "$PWD")\[\033[1;35m\]$(__git_ps1 "(%s)")\[\033[00m\]$ '
 else
-	PS1='${debian_chroot:+($debian_chroot)}$(_shortpath $PWD)$(__git_ps1 "(%s)")$ '
+	PS1='${debian_chroot:+($debian_chroot)}$(_shortpath "$PWD")$(__git_ps1 "(%s)")$ '
 fi
 unset color_prompt force_color_prompt
 

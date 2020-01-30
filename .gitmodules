@@ -43,10 +43,6 @@
 [submodule "vim/pack/plugins/start/ale"]
 	path = vim/pack/plugins/start/ale
 	url = https://github.com/dense-analysis/ale.git
-[submodule "vim/pack/plugins/start/LanguageClient-neovim"]
-	path = vim/pack/plugins/start/LanguageClient-neovim
-	url = https://github.com/autozimu/LanguageClient-neovim
-	branch = next
 [submodule "vim/pack/plugins/start/vim-isort"]
 	path = vim/pack/plugins/start/vim-isort
 	url = https://github.com/fisadev/vim-isort.git

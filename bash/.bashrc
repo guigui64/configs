@@ -4,8 +4,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-    *) return;;
+	*i*) ;;
+	*) return;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -32,12 +32,12 @@ shopt -s checkwinsize
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+	debian_chroot=$(cat /etc/debian_chroot)
 fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+	xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -46,21 +46,21 @@ esac
 force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-        # We have color support; assume it's compliant with Ecma-48
-        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-        # a case would tend to support setf rather than setaf.)
-        color_prompt=yes
-    else
-        color_prompt=
-    fi
+	if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+		# We have color support; assume it's compliant with Ecma-48
+		# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+		# a case would tend to support setf rather than setaf.)
+		color_prompt=yes
+	else
+		color_prompt=
+	fi
 fi
 
 # Configs path
 CONFIG_ROOT="$HOME/git/configs"
 
 # Git
-. ${CONFIG_ROOT}/git/git-prompt.sh
+source "${CONFIG_ROOT}/git/git-prompt.sh"
 
 # Detect work environment
 [[ -f ~/.work-env ]] && export WORKENV=true
@@ -78,25 +78,29 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-    xterm*|rxvt*)
-        PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-        ;;
-    *)
-        ;;
+	xterm*|rxvt*)
+		PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+		;;
+	*)
+		;;
 esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto --group-directories-first'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+	if [ -r ~/.dircolors ]; then
+		eval "$(dircolors -b ~/.dircolors)"
+	else
+		eval "$(dircolors -b)"
+	fi
+	alias ls='ls --color=auto --group-directories-first'
+	#alias dir='dir --color=auto'
+	#alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+	alias grep='grep --color=auto'
+	alias fgrep='fgrep --color=auto'
+	alias egrep='egrep --color=auto'
 else
-    alias ls='ls --group-directories-first'
+	alias ls='ls --group-directories-first'
 fi
 
 # colored GCC warnings and errors
@@ -123,11 +127,11 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-    if [ -f /usr/share/bash-completion/bash_completion ]; then
-        . /usr/share/bash-completion/bash_completion
-    elif [ -f /etc/bash_completion ]; then
-        . /etc/bash_completion
-    fi
+	if [ -f /usr/share/bash-completion/bash_completion ]; then
+		. /usr/share/bash-completion/bash_completion
+	elif [ -f /etc/bash_completion ]; then
+		. /etc/bash_completion
+	fi
 fi
 
 # Use Vi style commands on the shell (in insert mode by defualt)
@@ -149,14 +153,6 @@ export EDITOR=vim
 # Enable the **/* globstar
 shopt -s globstar
 
-# Conversion functions
-h2d(){
-    echo "ibase=16; $@"|bc
-}
-d2h(){
-    echo "obase=16; $@"|bc
-}
-
 # Go
 #export GOPATH=$HOME/golang/nonstd
 #export GOROOT=$HOME/golang/go
@@ -167,29 +163,32 @@ ulimit -c unlimited
 
 # ANT
 export ANT_ARGS='-logger org.apache.tools.ant.listener.AnsiColorLogger'
-export ANT_OPTS='-Dant.logger.defaults=$HOME/.ant-colors'
+# export ANT_OPTS='-Dant.logger.defaults=$HOME/.ant-colors'
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # added by Anaconda3 installer
 #export PATH="/home/comte/anaconda3/bin:$PATH"
 
 # Tmux
-. ${CONFIG_ROOT}/tmux/tmux-completion.bash
+source "${CONFIG_ROOT}/tmux/tmux-completion.bash"
 # Install Ruby Gems to ~/gems
 #export GEM_HOME="$HOME/gems"
 #export PATH="$HOME/gems/bin:$PATH"
 
 # fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.bash ] && source $HOME/.fzf.bash
 
 # Pipenv completion
-eval "$(pipenv --completion)"
+hash pipenv 2> /dev/null && eval "$(pipenv --completion)"
 
 # Add Rust to PATH
 [ -f ~/$HOME/.cargo/env ] && source $HOME/.cargo/env
 
 # Finally some joke to begin the shell laughing ;)
 # hash pyjoke 2> /dev/null && pyjoke
+
+# Thefuck completion
+hash thefuck 2> /dev/null && eval "$(thefuck --alias)"

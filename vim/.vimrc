@@ -281,17 +281,3 @@ let g:airline#extensions#ale#enabled=1
 let g:airline#extensions#obsession#enabled = 1
 
 " }}}
-
-" Language Servers {{{
-
-let g:LanguageClient_serverCommands = {
-	\ 'javascript': ['javascript-typescript-stdio'],
-	\ 'javascript.jsx': ['javascript-typescript-stdio'],
-	\ 'typescript': ['javascript-typescript-stdio'],
-	\ 'typescript.tsx': ['javascript-typescript-stdio']
-	\ }
-
-nnoremap <F6> :call LanguageClient_contextMenu()<CR>
-
-" }}}
-

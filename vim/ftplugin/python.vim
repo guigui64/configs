@@ -4,7 +4,7 @@ nnoremap <leader>p :! python3 % <CR>
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set textwidth=79
+set textwidth=100
 set autoindent
 set fileformat=unix
 

@@ -61,3 +61,6 @@
 [submodule "vim/pack/plugins/start/vimagit"]
 	path = vim/pack/plugins/start/vimagit
 	url = https://github.com/jreybert/vimagit.git
+[submodule "vim/pack/plugins/start/rust"]
+	path = vim/pack/plugins/start/rust
+	url = https://github.com/rust-lang/rust.vim

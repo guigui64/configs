@@ -185,7 +185,7 @@ source "${CONFIG_ROOT}/tmux/tmux-completion.bash"
 hash pipenv 2> /dev/null && eval "$(pipenv --completion)"
 
 # Add Rust to PATH
-[ -f ~/$HOME/.cargo/env ] && source $HOME/.cargo/env
+[ -f $HOME/.cargo/env ] && source $HOME/.cargo/env
 
 # Finally some joke to begin the shell laughing ;)
 # hash pyjoke 2> /dev/null && pyjoke

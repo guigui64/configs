@@ -9,10 +9,10 @@ set autoindent
 set fileformat=unix
 
 " Format
-augroup pyfmt
+augroup FileType python
 	au!
-	autocmd BufWritePre *.py execute ':Black'
-	autocmd BufWritePre *.py execute ':Isort'
+	autocmd bufwritepre <buffer> execute ':Black'
+	autocmd bufwritepre <buffer> execute ':Isort'
 augroup END
 
 " Go to outline like

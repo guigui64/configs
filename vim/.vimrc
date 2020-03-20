@@ -267,7 +267,8 @@ if !exists('$TMUX')
 	set termguicolors
 endif
 colorscheme solarized8
-highlight SpecialKey ctermfg=14 ctermbg=NONE
+" Change SpecialKey settings (tabs) after loading all plugins (VimEnter cheat)
+au VimEnter * highlight SpecialKey ctermfg=14 ctermbg=NONE
 
 " Airline config
 let g:airline_theme='solarized'

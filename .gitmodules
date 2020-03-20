@@ -64,3 +64,6 @@
 [submodule "vim/pack/plugins/start/rust"]
 	path = vim/pack/plugins/start/rust
 	url = https://github.com/rust-lang/rust.vim
+[submodule "vim/pack/plugins/start/vim-solarized8"]
+	path = vim/pack/plugins/start/vim-solarized8
+	url = https://github.com/lifepillar/vim-solarized8

@@ -68,7 +68,7 @@ set undodir=~/.vim/undodir
 let mapleader = ","
 
 " Visualize tabs and newlines
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:→\ ,trail:· ",eol:↲
 set list " To enable by default
 " Toggle on/off listchars
 noremap <leader>l :set list!<CR>
@@ -261,23 +261,16 @@ au BufNewFile,BufRead Jenkinsfile setf groovy
 " autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 " autocmd BufWinLeave * call clearmatches()
 
-" Color scheme (terminal)
-" set t_Co=256
-set background=dark
-" let g:solarized_termcolors=256
-" let g:solarized_termtrans=1
-" put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
-" in ~/.vim/colors/ and uncomment:
-" colorscheme solarized
-let g:gruvbox_italic=1
-colorscheme gruvbox
-" needed for full gruvbox support ('true color')
+" Color scheme
+set background=light
 if !exists('$TMUX')
 	set termguicolors
 endif
+colorscheme solarized8
+highlight SpecialKey ctermfg=14 ctermbg=NONE
 
 " Airline config
-let g:airline_theme='gruvbox'
+let g:airline_theme='solarized'
 let g:airline_powerline_fonts=1
 " let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#ale#enabled=1

@@ -23,7 +23,7 @@ alias gl='git lga'
 alias gd='git diff'
 alias gototop='cd `git toplvl`'
 functionCloneGithub() {
-	git clone "git@github.com:guigui64/$1"
+    git clone "git@github.com:guigui64/$1"
 }
 alias clgh='functionCloneGithub'
 alias wg='while (true) ; do clear ; git lga -n 16 ; echo === ; gsss ; sleep 5 ; done'
@@ -37,10 +37,10 @@ alias cdgosrcs='cd golang/nonstd/src/github.com/guigui64/'
 # if WORKENV is set
 if [ ! -z "$WORKENV" ] ; then
 
-	# SIMTG
-	alias simgdb='for core in `ls -t core*`; do echo "### Debug with core : $core ###"; gdb /tools/simtg/simtg/Ubuntu_16.04/64bit/simtg_2.11.0/simtgCorba $core; break; done;'
-	alias cachefree='free -h && sync && sudo sh -c "echo 3 > /proc/sys/vm/drop_caches" && free -h'
-	alias simtgCorbaPids='pgrep simtgCorba'
-	alias sourceSimtgEnv='source ~/git/scripts/envSimTG.sh'
+    # SIMTG
+    alias simgdb='for core in `ls -t core*`; do echo "### Debug with core : $core ###"; gdb /tools/simtg/simtg/Ubuntu_16.04/64bit/simtg_2.11.0/simtgCorba $core; break; done;'
+    alias cachefree='free -h && sync && sudo sh -c "echo 3 > /proc/sys/vm/drop_caches" && free -h'
+    alias simtgCorbaPids='pgrep simtgCorba'
+    alias sourceSimtgEnv='source ~/git/scripts/envSimTG.sh'
 
 fi

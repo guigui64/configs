@@ -4,15 +4,16 @@ nnoremap <leader>p :! python3 % <CR>
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set expandtab
 set textwidth=100
 set autoindent
 set fileformat=unix
 
 " Format
 augroup FileType python
-	au!
-	autocmd bufwritepre <buffer> execute ':Black'
-	autocmd bufwritepre <buffer> execute ':Isort'
+    autocmd!
+    autocmd bufwritepre <buffer> execute ':Black'
+    autocmd bufwritepre <buffer> execute ':Isort'
 augroup END
 
 " Go to outline like

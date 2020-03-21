@@ -1,31 +1,31 @@
 [alias]
-	st = status
-	cm = commit -m
-	cam = commit -am
-	lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(yellow)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(yellow)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-	lg = !"git lg1"
-	toplvl = rev-parse --show-toplevel
-	lga = log --graph --decorate --oneline --all
-	lgs = log --graph --decorate --oneline
-	changelog = log --format=%s --reverse
+    st = status
+    cm = commit -m
+    cam = commit -am
+    lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(yellow)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(yellow)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+    lg = !"git lg1"
+    toplvl = rev-parse --show-toplevel
+    lga = log --graph --decorate --oneline --all
+    lgs = log --graph --decorate --oneline
+    changelog = log --format=%s --reverse
 [core]
-	editor = vim
+    editor = vim
 [push]
-	default = simple
+    default = simple
 [user]
-	email = guillaume.comte@airbus.com
-	name = Guillaume Comte
-	signinkey = 97FA06C2A0622E39
+    email = guillaume.comte@airbus.com
+    name = Guillaume Comte
+    signinkey = 97FA06C2A0622E39
 [fetch]
-	prune = true
+    prune = true
 [commit]
-	gpgsign = true
+    gpgsign = true
 [gpg]
-	program = gpg2
+    program = gpg2
 [credential]
-	helper = cache
+    helper = cache
 [diff]
-	tool = vimdiff
+    tool = vimdiff
 [merge]
-	tool = vimdiff
+    tool = vimdiff

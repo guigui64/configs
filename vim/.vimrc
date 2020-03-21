@@ -41,11 +41,10 @@ set encoding=utf-8 " Encoding
 set wrap
 set textwidth=79
 set formatoptions=cqrn1
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set noexpandtab " use tabs
-set noshiftround
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab " use spaces
 
 set ttymouse=xterm2 " For mouse in tmux
 set mouse=a " Mouse
@@ -92,9 +91,9 @@ noremap <leader><space> :let @/=''<cr>
 " Autocommand settings {{{
 
 augroup filetype_vim
-	autocmd!
-	autocmd FileType vim setlocal foldmethod=marker
-	autocmd FileType vim setlocal foldlevelstart=0
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+    autocmd FileType vim setlocal foldlevelstart=0
 augroup END
 
 " Auto source .vimrc file when edited
@@ -134,13 +133,13 @@ noremap <leader>tgb :TagbarToggle<CR>
 nnoremap <leader>s :update<CR>
 
 function! ToggleNumbers()
-	if (&relativenumber == 1)
-		set nu
-		set nornu
-	else
-		set nu
-		set rnu
-	endif
+    if (&relativenumber == 1)
+        set nu
+        set nornu
+    else
+        set nu
+        set rnu
+    endif
 endfunc
 noremap <C-n> :call ToggleNumbers()<CR>
 
@@ -264,11 +263,11 @@ au BufNewFile,BufRead Jenkinsfile setf groovy
 " Color scheme
 set background=light
 if !exists('$TMUX')
-	set termguicolors
+    set termguicolors
 endif
 colorscheme solarized8
 " Change SpecialKey settings (tabs) after loading all plugins (VimEnter cheat)
-au VimEnter * highlight SpecialKey ctermfg=14 ctermbg=NONE
+au VimEnter * highlight clear SpecialKey | highlight SpecialKey ctermfg=14 ctermbg=NONE
 
 " Airline config
 let g:airline_theme='solarized'

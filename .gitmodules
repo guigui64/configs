@@ -67,3 +67,6 @@
 [submodule "vim/pack/plugins/start/vim-solarized8"]
 	path = vim/pack/plugins/start/vim-solarized8
 	url = https://github.com/lifepillar/vim-solarized8
+[submodule "vim/pack/plugins/start/vim-racer"]
+	path = vim/pack/plugins/start/vim-racer
+	url = https://github.com/racer-rust/vim-racer.git

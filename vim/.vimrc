@@ -193,6 +193,10 @@ nnoremap <leader>ft :Tags<CR>
 " new tab
 nnoremap <leader>tn :tabnew<CR>
 
+" omni completion
+inoremap <C-Space> <C-x><C-o>
+imap <C-@> <C-Space>
+
 " }}}
 
 " Abbreviations {{{

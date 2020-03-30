@@ -161,6 +161,9 @@ noremap - ddp
 " move one line up
 noremap + ddkP
 
+" replace spaces by tabs
+noremap <leader>stt :s/    /\t/g<CR>:let @/=''<CR>
+
 " term
 nnoremap <leader>tb :below terminal ++rows=10<CR>
 
@@ -286,6 +289,8 @@ endif
 colorscheme solarized8
 " Change SpecialKey settings (tabs) after loading all plugins (VimEnter cheat)
 au VimEnter * highlight clear SpecialKey | highlight SpecialKey ctermfg=14 ctermbg=NONE
+" call it again in case reloading vimrc
+highlight SpecialKey ctermfg=14 ctermbg=NONE
 
 " Airline config
 let g:airline_theme='solarized'

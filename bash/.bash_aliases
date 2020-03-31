@@ -43,4 +43,8 @@ if [ ! -z "$WORKENV" ] ; then
     alias simtgCorbaPids='pgrep simtgCorba'
     alias sourceSimtgEnv='source ~/git/scripts/envSimTG.sh'
 
+else
+
+    alias vm='ssh -X -p 1804 127.0.0.1'
+
 fi

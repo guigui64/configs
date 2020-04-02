@@ -180,6 +180,19 @@ source "${CONFIG_ROOT}/tmux/tmux-completion.bash"
 
 # fzf
 [ -f ~/.fzf.bash ] && source $HOME/.fzf.bash
+export FZF_DEFAULT_OPTS="
+--info=inline
+--multi
+--preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
+--color='light'
+--bind '?:toggle-preview'
+--bind 'ctrl-a:select-all'
+--bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
+--bind 'ctrl-v:execute(echo {+} | xargs -o vim)'
+"
+export FZF_DEFAULT_COMMAND="fdfind --hidden"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 
 # Pipenv completion
 hash pipenv 2> /dev/null && eval "$(pipenv --completion)"

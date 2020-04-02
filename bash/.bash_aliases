@@ -9,6 +9,7 @@ alias lessn='less -N'
 alias asl='awk '\''{ print $NF }'\'' | sed '\''s/*//'\'' | xargs less'
 alias clock='tty-clock -sc -C 6'
 alias wtree="while true; do clear ; tree -a -I 'generation|bin|build|__pycache__|node_modules|.git|*.swp' ; sleep 5 ; done"
+alias fd='fdfind'
 
 # Clipboard
 alias pbcopy='xclip -selection clipboard'
@@ -30,6 +31,7 @@ alias wg='while (true) ; do clear ; git lga -n 16 ; echo === ; gsss ; sleep 5 ; 
 alias wgl='while (true) ; do clear ; git lga -n 15 ; sleep 5 ; done'
 alias wgs='while (true) ; do clear ; git status ; sleep 5 ; done'
 alias gka='gitk --all'
+alias forgit='source ~/git/configs/git/forgit/forgit.plugin.sh'
 
 # Go
 alias cdgosrcs='cd golang/nonstd/src/github.com/guigui64/'

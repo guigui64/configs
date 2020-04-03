@@ -5,8 +5,6 @@ augroup Rust
     autocmd BufWritePre <buffer> execute ':RustFmt'
 augroup END
 
-" vim-racer config
-let g:racer_experimental_completer = 1
 augroup Racer
     autocmd!
     autocmd FileType rust nmap <buffer> gd <Plug>(rust-def)

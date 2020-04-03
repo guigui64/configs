@@ -253,6 +253,9 @@ au FileType css setlocal formatprg=prettier\ --parser\ css
 " Jenkinsfile is groovy
 au BufNewFile,BufRead Jenkinsfile setf groovy
 
+" vim-racer config
+let g:racer_experimental_completer = 1
+
 " }}}
 
 " Looks {{{

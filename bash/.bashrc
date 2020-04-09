@@ -61,17 +61,19 @@ CONFIG_ROOT="$HOME/git/configs"
 
 # Git
 source "${CONFIG_ROOT}/git/git-prompt.sh"
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUPSTREAM=0
+
+# Prompt
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00;30m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[1;36m\]$(__git_ps1 "(%s)")\[\033[01;$(if [ "$?" == "0" ]; then printf "32"; else printf "31"; fi)m\]\$ \[\033[00;00m\]'
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 "(%s)")\$ '
+fi
+unset color_prompt force_color_prompt
 
 # Detect work environment
 [[ -f ~/.work-env ]] && export WORKENV=true
-
-# Powerline shell prompt
-function _update_ps1() {
-    PS1=$(powerline-shell $?)
-}
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in

@@ -260,16 +260,6 @@ let g:racer_experimental_completer = 1
 
 " Looks {{{
 
-" Why does it not work ???
-" Show extra whitespace
-" MUST be insterted before color scheme !
-" autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-" match ExtraWhitespace /\s\+$/
-" autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-" autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-" autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-" autocmd BufWinLeave * call clearmatches()
-
 " Color scheme
 set background=light
 if !exists('$TMUX')
@@ -283,9 +273,8 @@ highlight SpecialKey ctermfg=14 ctermbg=NONE
 
 " Airline config
 let g:airline_theme='solarized'
-let g:airline_powerline_fonts=1
 " let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#ale#enabled=1
+" let g:airline#extensions#ale#enabled=1
 let g:airline#extensions#obsession#enabled = 1
 
 " }}}

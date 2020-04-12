@@ -40,9 +40,6 @@
 [submodule "vim/pack/plugins/start/jedi-vim"]
 	path = vim/pack/plugins/start/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim
-[submodule "vim/pack/plugins/start/ale"]
-	path = vim/pack/plugins/start/ale
-	url = https://github.com/dense-analysis/ale.git
 [submodule "vim/pack/plugins/start/vim-isort"]
 	path = vim/pack/plugins/start/vim-isort
 	url = https://github.com/fisadev/vim-isort.git
@@ -64,9 +61,6 @@
 [submodule "vim/pack/plugins/start/vim-solarized8"]
 	path = vim/pack/plugins/start/vim-solarized8
 	url = https://github.com/lifepillar/vim-solarized8
-[submodule "vim/pack/plugins/start/vim-racer"]
-	path = vim/pack/plugins/start/vim-racer
-	url = https://github.com/racer-rust/vim-racer.git
 [submodule "git/forgit"]
 	path = git/forgit
 	url = https://github.com/wfxr/forgit

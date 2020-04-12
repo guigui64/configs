@@ -199,6 +199,9 @@ export BAT_THEME="Solarized (light)"
 # Pipenv completion
 hash pipenv 2> /dev/null && eval "$(pipenv --completion)"
 
+# NPM completion
+hash npm 2> /dev/null && eval "$(npm completion)"
+
 # Add Rust to PATH
 [ -f $HOME/.cargo/env ] && source $HOME/.cargo/env
 

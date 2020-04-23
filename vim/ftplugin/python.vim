@@ -9,12 +9,5 @@ set textwidth=100
 set autoindent
 set fileformat=unix
 
-" Format
-augroup FileType python
-    autocmd!
-    autocmd bufwritepre <buffer> execute ':Black'
-    autocmd bufwritepre <buffer> execute ':Isort'
-augroup END
-
 " Go to outline like
 nnoremap <leader>o /def 

@@ -5,10 +5,8 @@ augroup Rust
     autocmd BufWritePre <buffer> execute ':RustFmt'
 augroup END
 
-augroup Racer
-    autocmd!
-    autocmd FileType rust nmap <buffer> gd <Plug>(rust-def)
-    autocmd FileType rust nmap <buffer> gs <Plug>(rust-def-split)
-    autocmd FileType rust nmap <buffer> gx <Plug>(rust-def-vertical)
-    autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
-augroup END
+nnoremap <leader>cr :Crun<cr>
+nnoremap <leader>cc :Ccheck<cr>
+nnoremap <leader>ct :Ctest<cr>
+
+nnoremap <leader>rr :RustRun<cr>

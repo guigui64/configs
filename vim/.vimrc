@@ -26,11 +26,16 @@ set cursorlineopt=number " Only highlight the current line number
 
 set ruler " Show file stats
 set laststatus=2 " Status bar
+" set cmdheight=2 " Give more space for displaying messages
 set showmode " Last line
 set showcmd
 set wildmode=longest,list,full
 set wildmenu
 set visualbell " Blink cursor on error instead of beeping (grr)
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+set signcolumn=yes
 
 set path+=** " Search down recursively (for :find, completion etc.)
 
@@ -72,6 +77,10 @@ set list " To enable by default
 " Toggle on/off listchars
 noremap <leader>l :set list!<CR>
 
+" splits
+set splitright " for :vsplit
+set splitbelow " for :split
+
 " }}}
 
 " Search settings {{{
@@ -98,18 +107,6 @@ augroup END
 
 " Auto source .vimrc file when edited
 autocmd! BufWritePost .vimrc source %
-
-" autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-" autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
-" " Toggle auto formatting:
-" nmap <Leader>C :ClangFormatAutoToggle<CR>
-" " Auto-enable auto-formatting C files
-" autocmd FileType c,cpp ClangFormatAutoEnable
-
-" augroup filetype_c
-" 	autocmd!
-" 	autocmd BufWritePre,BufRead *.c,*.cpp,*.h,*.hpp :normal gg=G
-" augroup END
 
 augroup templates
     autocmd BufNewFile *.pl execute "0r ~/.vim/templates/skeleton.pl" | normal G
@@ -149,7 +146,6 @@ map <C-m> :cprevious<CR>
 nnoremap <leader>c :cclose<CR>
 
 " Formatting
-noremap <leader>q gqip
 noremap <F5> mzgggqG`z
 
 " vimrc
@@ -165,7 +161,7 @@ noremap + ddkP
 noremap <leader>stt :s/    /\t/g<CR>:let @/=''<CR>
 
 " term
-nnoremap <leader>tb :below terminal ++rows=10<CR>
+nnoremap <leader>tb :botright terminal ++rows=10<CR>
 
 " auto }
 inoremap {<CR>  {<CR>}<Esc>O
@@ -179,10 +175,8 @@ nnoremap <left>     <nop>
 " toggle background
 noremap <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
-" save with leader S
+" save with leader s
 noremap <leader>s :update<CR>
-" prevent jedi-vim to override it
-let g:jedi#goto_stubs_command="<leader>js"
 
 " save without format or any aucmd
 noremap <leader>zs :noa w<CR>
@@ -200,6 +194,34 @@ nnoremap <leader>tn :tabnew<CR>
 inoremap <C-Space> <C-x><C-o>
 imap <C-@> <C-Space>
 
+" Coc
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> gd :<C-u>call CocActionAsync('jumpDefinition')<CR>
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
 " }}}
 
 " Abbreviations {{{
@@ -213,48 +235,8 @@ iabbrev unint   uint32_t
 
 " Programming languages {{{
 
-" Go {{{
-
-" run :GoBuild or :GoTestCompile based on the go file
-" function! s:build_go_files()
-" let l:file = expand('%')
-" if l:file =~# '^\f\+_test\.go$'
-"     call go#test#Test(0, 1)
-" elseif l:file =~# '^\f\+\.go$'
-"     call go#cmd#Build(0)
-" endif
-" endfunction
-" autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-" autocmd FileType go nmap <leader>r  <Plug>(go-run)
-" autocmd FileType go nmap <leader>i  <Plug>(go-imports)
-" autocmd FileType go nmap <leader>t  <Plug>(go-test)
-" let g:go_fmt_command = "goimports"
-" let g:go_highlight_types = 1
-" let g:go_highlight_functions = 1
-" let g:go_highlight_methods = 1
-
-" }}}
-
-" Javascript/Typescript{{{
-
-" FORMATTERS
-au FileType javascript setlocal formatprg=prettier
-au FileType javascript.jsx setlocal formatprg=prettier
-au! BufRead,BufNewFile *.json set filetype=json
-au FileType json setlocal formatprg=prettier
-au FileType typescript setlocal formatprg=prettier\ --parser\ typescript
-au FileType typescript.tsx setlocal formatprg=prettier\ --parser\ typescript
-au FileType html setlocal formatprg=js-beautify\ --type\ html
-au FileType scss setlocal formatprg=prettier\ --parser\ css
-au FileType css setlocal formatprg=prettier\ --parser\ css
-
-" }}}
-
 " Jenkinsfile is groovy
 au BufNewFile,BufRead Jenkinsfile setf groovy
-
-" vim-racer config
-let g:racer_experimental_completer = 1
 
 " }}}
 

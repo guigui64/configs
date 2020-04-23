@@ -66,7 +66,7 @@ export GIT_PS1_SHOWUPSTREAM=0
 
 # Prompt
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u@\h\[\033[00;30m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;36m\]$(__git_ps1 "(%s)")\[\033[01;$(if [ "$?" == "0" ]; then printf "32"; else printf "31"; fi)m\]\$ \[\033[00;00m\]'
+    PS1='${debian_chroot:+($debian_chroot)}\[\e[1;33m\]\u@\h:\[\e[1;34m\]\w\[\e[01;36m\]$(__git_ps1 "(%s)")\[\e[1;$(if [ "$?" == "0" ]; then printf "32"; else printf "31"; fi)m\]\$ \[\e[0;00m\]'
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 "(%s)")\$ '
 fi

@@ -1,5 +1,7 @@
 # vim: filetype=bash
 
+alias :q='exit'
+
 alias df='df -Th --total'
 alias du='du -h'
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"

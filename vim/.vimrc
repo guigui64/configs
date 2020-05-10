@@ -51,7 +51,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab " use spaces
 
-set ttymouse=xterm2 " For mouse in tmux
+set ttymouse=sgr " For mouse in tmux (?) and to handle more than 220 cols
 set mouse=a " Mouse
 let g:NERDTreeMouseMode=3
 set scrolloff=3 " Cursor motion
@@ -66,7 +66,11 @@ set ttyfast " Rendering
 
 " Persistent undo
 set undofile
-set undodir=~/.vim/undodir
+
+" Backup directories
+set backupdir=.backup/,~/.backup/,/tmp//
+set directory=.swp/,~/.swp/,/tmp//
+set undodir=.undo/,~/.undo/,/tmp//
 
 " Pick a leader key : \ being the default one
 let mapleader = ","
@@ -244,9 +248,7 @@ au BufNewFile,BufRead Jenkinsfile setf groovy
 
 " Color scheme
 set background=light
-if !exists('$TMUX')
-    set termguicolors
-endif
+set termguicolors
 colorscheme solarized8
 " Change SpecialKey settings (tabs) after loading all plugins (VimEnter cheat)
 au VimEnter * highlight clear SpecialKey | highlight SpecialKey ctermfg=14 ctermbg=NONE

@@ -94,9 +94,10 @@ function! coc#util#cursor()
 endfunction
 
 function! coc#util#close_win(id)
-  if !has('nvim') && exists('*popup_close')
-    call popup_close(a:id)
-    return
+  if s:is_vim && exists('*popup_close')
+    if !empty(popup_getpos(a:id))
+      call popup_close(a:id)
+    endif
   endif
   if exists('*nvim_win_close')
     if nvim_win_is_valid(a:id)
@@ -123,24 +124,133 @@ function! coc#util#close(id) abort
   endif
 endfunction
 
+function! coc#util#get_float_mode(allow_selection, align_top, pum_align_top) abort
+  let mode = mode()
+  if pumvisible() && a:align_top == a:pum_align_top
+    return v:null
+  endif
+  let checked = (mode == 's' && a:allow_selection) || index(['i', 'n', 'ic'], mode) != -1
+  if !checked
+    return v:null
+  endif
+  if !s:is_vim && mode ==# 'i'
+    " helps to fix undo issue, don't know why.
+    call feedkeys("\<C-g>u", 'n')
+  endif
+  let pos = coc#util#win_position()
+  return [mode, bufnr('%'), pos, [line('.'), col('.')]]
+endfunction
+
+" create buffer for popup/float window
+function! coc#util#create_float_buf(bufnr) abort
+  " reuse buffer cause error on vim8
+  if a:bufnr && bufloaded(a:bufnr)
+    return a:bufnr
+  endif
+  if s:is_vim
+    noa let bufnr = bufadd('')
+    noa call bufload(bufnr)
+  else
+    noa let bufnr = nvim_create_buf(v:false, v:true)
+  endif
+  " Don't use popup filetype, it would crash on reuse!
+  call setbufvar(bufnr, '&buftype', 'nofile')
+  call setbufvar(bufnr, '&bufhidden', 'hide')
+  call setbufvar(bufnr, '&swapfile', 0)
+  call setbufvar(bufnr, '&tabstop', 2)
+  call setbufvar(bufnr, '&undolevels', -1)
+  return bufnr
+endfunction
+
+" create/reuse float window for config position.
+function! coc#util#create_float_win(winid, bufnr, config) abort
+  " use exists
+  if a:winid
+    if s:is_vim && !empty(popup_getoptions(a:winid))
+      let [line, col] = s:popup_position(a:config)
+      call popup_move(a:winid, {
+        \ 'line': line,
+        \ 'col': col,
+        \ 'minwidth': a:config['width'] - 2,
+        \ 'minheight': a:config['height'],
+        \ 'maxwidth': a:config['width'] - 2,
+        \ 'maxheight': a:config['height'],
+        \ })
+      return [a:winid, winbufnr(a:winid)]
+    endif
+    if !s:is_vim && nvim_win_is_valid(a:winid)
+      call nvim_win_set_config(a:winid, a:config)
+      return [a:winid, winbufnr(a:winid)]
+    endif
+  endif
+  let winid = 0
+  if s:is_vim
+    let [line, col] = s:popup_position(a:config)
+    let bufnr = coc#util#create_float_buf(a:bufnr)
+    let winid = popup_create(bufnr, {
+        \ 'padding': [0, 1, 0, 1],
+        \ 'highlight': 'CocFloating',
+        \ 'fixed': 1,
+        \ 'line': line,
+        \ 'col': col,
+        \ 'minwidth': a:config['width'] - 2,
+        \ 'minheight': a:config['height'],
+        \ 'maxwidth': a:config['width'] - 2,
+        \ 'maxheight': a:config['height'],
+        \ })
+    if has("patch-8.1.2281")
+      call setwinvar(winid, 'showbreak', 'NONE')
+    endif
+  else
+    let bufnr = coc#util#create_float_buf(a:bufnr)
+    let winid = nvim_open_win(bufnr, 0, a:config)
+    call setwinvar(winid, '&foldcolumn', 1)
+    call setwinvar(winid, '&list', 0)
+    call setwinvar(winid, '&wrap', 1)
+    call setwinvar(winid, '&number', 0)
+    call setwinvar(winid, '&relativenumber', 0)
+    call setwinvar(winid, '&cursorcolumn', 0)
+    call setwinvar(winid, '&cursorline', 0)
+    call setwinvar(winid, '&colorcolumn', 0)
+    call setwinvar(winid, '&signcolumn', 'no')
+    call setwinvar(winid, '&winhl', 'Normal:CocFloating,NormalNC:CocFloating,FoldColumn:CocFloating')
+  endif
+  if winid <= 0
+    return null
+  endif
+  call setwinvar(winid, 'float', 1)
+  call setwinvar(winid, '&wrap', 1)
+  call setwinvar(winid, '&linebreak', 1)
+  call setwinvar(winid, '&conceallevel', 2)
+  let g:coc_last_float_win = winid
+  call coc#util#do_autocmd('CocOpenFloat')
+  return [winid, winbufnr(winid)]
+endfunction
+
+function! coc#util#valid_float_win(winid) abort
+  if s:is_vim
+    return !empty(popup_getoptions(a:winid))
+  endif
+  return nvim_win_is_valid(a:winid)
+endfunction
+
+function! coc#util#path_replace_patterns() abort
+  if has('win32unix') && exists('g:coc_cygqwin_path_prefixes')
+    echohl WarningMsg 
+    echon 'g:coc_cygqwin_path_prefixes is deprecated, use g:coc_uri_prefix_replace_patterns instead' 
+    echohl None
+    return g:coc_cygqwin_path_prefixes
+  endif
+  if exists('g:coc_uri_prefix_replace_patterns')
+    return g:coc_uri_prefix_replace_patterns
+  endif
+  return v:null
+endfunction
+
 function! coc#util#win_position()
   let nr = winnr()
   let [row, col] = win_screenpos(nr)
   return [row + winline() - 2, col + wincol() - 2]
-endfunction
-
-function! coc#util#close_popup()
-  if s:is_vim
-    if exists('*popup_close')
-      call popup_close(get(g:, 'coc_popup_id', 0))
-    endif
-  else
-    for winnr in range(1, winnr('$'))
-      if getwinvar(winnr, 'popup', 0)
-        exe winnr.'close!'
-      endif
-    endfor
-  endif
 endfunction
 
 function! coc#util#version()
@@ -379,15 +489,23 @@ endfunction
 
 function! coc#util#get_data_home()
   if !empty(get(g:, 'coc_data_home', ''))
-    return resolve(expand(g:coc_data_home))
+    let dir = resolve(expand(g:coc_data_home))
+  else
+    if exists('$XDG_CONFIG_HOME')
+      let dir = resolve($XDG_CONFIG_HOME."/coc")
+    else
+      if s:is_win
+        let dir = resolve(expand('~/AppData/Local/coc'))
+      else
+        let dir = resolve(expand('~/.config/coc'))
+      endif
+    endif
   endif
-  if exists('$XDG_CONFIG_HOME')
-    return resolve($XDG_CONFIG_HOME."/coc")
+  if !isdirectory(dir)
+    echohl MoreMsg | echom '[coc.nvim] creating data directory: '.dir | echohl None
+    call mkdir(dir, "p", 0755)
   endif
-  if s:is_win
-    return resolve($HOME.'/AppData/Local/coc')
-  endif
-  return resolve($HOME.'/.config/coc')
+  return dir
 endfunction
 
 function! coc#util#get_input()
@@ -682,7 +800,7 @@ function! coc#util#vim_info()
         \ 'locationlist': get(g:,'coc_enable_locationlist', 1),
         \ 'progpath': v:progpath,
         \ 'guicursor': &guicursor,
-        \ 'textprop': has('textprop') && has('patch-8.1.1522') && !has('nvim') ? v:true : v:false,
+        \ 'textprop': has('textprop') && has('patch-8.1.1610') && !has('nvim') ? v:true : v:false,
         \}
 endfunction
 
@@ -802,9 +920,15 @@ function! coc#util#extension_root() abort
   endif
   if !empty(get(g:, 'coc_extension_root', ''))
     echohl WarningMsg | echon "g:coc_extension_root variable is deprecated, use g:coc_data_home as parent folder of extensions." | echohl None
-    return resolve(expand(g:coc_extension_root))
+    let folder = resolve(expand(g:coc_extension_root))
+  else
+    let folder = coc#util#get_data_home().'/extensions'
   endif
-  return coc#util#get_data_home().'/extensions'
+  if !isdirectory(folder)
+    echohl MoreMsg | echom '[coc.nvim] creating extensions directory: '.folder | echohl None
+    call mkdir(folder, "p", 0755)
+  endif
+  return folder
 endfunction
 
 function! coc#util#update_extensions(...) abort
@@ -1048,4 +1172,45 @@ function! coc#util#refactor_fold_text(lnum) abort
     let range = info[0].':'.info[1]
   endif
   return trim(getline(a:lnum)[3:]).' '.range
+endfunction
+
+" get popup position for vim8 based on config of neovim float window
+function! s:popup_position(config) abort
+  let relative = get(a:config, 'relative', 'editor')
+  if relative ==# 'cursor'
+    return [s:popup_cursor(a:config['row']), s:popup_cursor(a:config['col'])]
+  endif
+  return [a:config['row'] + 1, a:config['col'] + 1]
+endfunction
+
+function! s:popup_cursor(n) abort
+  if a:n == 0
+    return 'cursor'
+  endif
+  if a:n < 0
+    return 'cursor'.a:n
+  endif
+  return 'cursor+'.a:n
+endfunction
+
+function! coc#util#set_buf_lines(bufnr, lines) abort
+  if !bufloaded(a:bufnr)
+    return
+  endif
+  let info = getbufinfo(a:bufnr)
+  noa call appendbufline(a:bufnr, '$', a:lines)
+  noa call deletebufline(a:bufnr, 1, info[0]['linecount'])
+endfunction
+
+" get tabsize & expandtab option
+function! coc#util#get_format_opts(bufnr) abort
+  if a:bufnr && bufloaded(a:bufnr)
+    let tabsize = getbufvar(a:bufnr, '&shiftwidth')
+    if tabsize == 0
+      let tabsize = getbufvar(a:bufnr, '&tabstop')
+    endif
+    return [tabsize, getbufvar(a:bufnr, '&expandtab')]
+  endif
+  let tabsize = &shiftwidth == 0 ? &tabstop : &shiftwidth
+  return [tabsize, &expandtab]
 endfunction

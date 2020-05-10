@@ -16,7 +16,7 @@
 [user]
     email = guillaume.comte10@gmail.com
     name = guigui64
-    signingkey = 46765D03A0A84B91
+    signingkey = 0D90BD8F357E730F
 [fetch]
     prune = true
 [commit]

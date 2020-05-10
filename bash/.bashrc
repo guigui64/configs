@@ -25,7 +25,7 @@ shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -149,14 +149,6 @@ export PATH=$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/git/scripts:$JAVA_HOME/
 export VISUAL=vim
 export EDITOR=vim
 
-# Enable the **/* globstar
-shopt -s globstar
-
-# Go
-#export GOPATH=$HOME/golang/nonstd
-#export GOROOT=$HOME/golang/go
-#export PATH=$GOROOT/bin:$PATH
-
 # CORE
 ulimit -c unlimited
 
@@ -164,18 +156,8 @@ ulimit -c unlimited
 export ANT_ARGS='-logger org.apache.tools.ant.listener.AnsiColorLogger'
 # export ANT_OPTS='-Dant.logger.defaults=$HOME/.ant-colors'
 
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# added by Anaconda3 installer
-#export PATH="/home/comte/anaconda3/bin:$PATH"
-
 # Tmux
 source "${CONFIG_ROOT}/tmux/tmux-completion.bash"
-# Install Ruby Gems to ~/gems
-#export GEM_HOME="$HOME/gems"
-#export PATH="$HOME/gems/bin:$PATH"
 
 # fzf
 [ -f ~/.fzf.bash ] && source $HOME/.fzf.bash
@@ -203,10 +185,11 @@ hash pipenv 2> /dev/null && eval "$(pipenv --completion)"
 hash npm 2> /dev/null && eval "$(npm completion)"
 
 # Add Rust to PATH
-[ -f $HOME/.cargo/env ] && source $HOME/.cargo/env
-
-# Finally some joke to begin the shell laughing ;)
-# hash pyjoke 2> /dev/null && pyjoke
+if [ -f $HOME/.cargo/env ]; then
+    source $HOME/.cargo/env
+    eval "$(rustup completions bash)"
+    eval "$(rustup completions bash cargo)"
+fi
 
 # Thefuck completion
 hash thefuck 2> /dev/null && eval "$(thefuck --alias)"

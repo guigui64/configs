@@ -12,6 +12,7 @@ alias asl='awk '\''{ print $NF }'\'' | sed '\''s/*//'\'' | xargs less'
 alias clock='tty-clock -sc -C 6'
 alias wtree="while true; do clear ; tree -a -I 'generation|bin|build|__pycache__|node_modules|.git|*.swp' ; sleep 5 ; done"
 alias fd='fdfind'
+alias rscp='rsync -avzh --info=progress2'
 
 # Clipboard
 alias pbcopy='xclip -selection clipboard'

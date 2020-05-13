@@ -43,3 +43,7 @@
 [submodule "git/forgit"]
 	path = git/forgit
 	url = https://github.com/wfxr/forgit
+[submodule "vim/pack/plugins/start/coc.nvim"]
+	path = vim/pack/plugins/start/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git
+	branch = release

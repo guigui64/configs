@@ -10,5 +10,8 @@
     "javascriptreact",
     "typescript",
     "typescriptreact"
-  ]
+  ],
+  "diagnostic-languageserver.filetypes": {
+    "sh": "shellcheck"
+  }
 }

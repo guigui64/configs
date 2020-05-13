@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -160,7 +162,7 @@ export ANT_ARGS='-logger org.apache.tools.ant.listener.AnsiColorLogger'
 source "${CONFIG_ROOT}/tmux/tmux-completion.bash"
 
 # fzf
-[ -f ~/.fzf.bash ] && source $HOME/.fzf.bash
+[ -f ~/.fzf.bash ] && source "$HOME/.fzf.bash"
 export FZF_DEFAULT_OPTS="
 --info=inline
 --multi
@@ -185,11 +187,15 @@ hash pipenv 2> /dev/null && eval "$(pipenv --completion)"
 hash npm 2> /dev/null && eval "$(npm completion)"
 
 # Add Rust to PATH
-if [ -f $HOME/.cargo/env ]; then
-    source $HOME/.cargo/env
+if [ -f "$HOME/.cargo/env" ]; then
+    source "$HOME/.cargo/env"
     eval "$(rustup completions bash)"
     eval "$(rustup completions bash cargo)"
 fi
 
 # Thefuck completion
 hash thefuck 2> /dev/null && eval "$(thefuck --alias)"
+
+# Tabs size in terminal
+tabs -4
+export LESS=Rx4

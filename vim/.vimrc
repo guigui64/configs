@@ -247,18 +247,17 @@ au BufNewFile,BufRead Jenkinsfile setf groovy
 " Looks {{{
 
 " Color scheme
-set background=light
+set background=dark
 set termguicolors
-colorscheme solarized8
+autocmd VimEnter * colorscheme gruvbox
 " Change SpecialKey settings (tabs) after loading all plugins (VimEnter cheat)
-au VimEnter * highlight clear SpecialKey | highlight SpecialKey ctermfg=14 ctermbg=NONE
+autocmd VimEnter * highlight clear SpecialKey | highlight SpecialKey ctermfg=14 ctermbg=NONE
 " call it again in case reloading vimrc
 highlight SpecialKey ctermfg=14 ctermbg=NONE
 
 " Airline config
-let g:airline_theme='solarized'
-" let g:airline#extensions#tabline#enabled=1
-" let g:airline#extensions#ale#enabled=1
+let g:airline_theme = 'gruvbox'
 let g:airline#extensions#obsession#enabled = 1
+autocmd VimEnter * AirlineRefresh
 
 " }}}

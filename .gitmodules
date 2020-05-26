@@ -47,3 +47,9 @@
 	path = vim/pack/plugins/start/coc.nvim
 	url = https://github.com/neoclide/coc.nvim.git
 	branch = release
+[submodule "vim/pack/plugins/start/gruvbox"]
+	path = vim/pack/plugins/start/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
+[submodule "gnome-terminal/Gogh"]
+	path = gnome-terminal/Gogh
+	url = https://github.com/Mayccoll/Gogh.git

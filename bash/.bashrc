@@ -10,32 +10,13 @@ case $- in
     *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000000
-HISTFILESIZE=2000000
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-shopt -s globstar
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
+
+# append to the history file, don't overwrite it
+shopt -s histappend
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -135,29 +116,6 @@ if ! shopt -oq posix; then
     fi
 fi
 
-# Use Vi style commands on the shell (in insert mode by defualt)
-set -o vi
-# switch back to emacs : set -o emacs
-# Clear screen with C-l also in insert mode
-bind -m vi-insert "\C-l":clear-screen
-
-# Java
-export JAVA_HOME=/usr/java/default
-
-# PATH
-export PATH=$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/git/scripts:$JAVA_HOME/bin:$PATH
-
-# VIM
-export VISUAL=vim
-export EDITOR=vim
-
-# CORE
-ulimit -c unlimited
-
-# ANT
-export ANT_ARGS='-logger org.apache.tools.ant.listener.AnsiColorLogger'
-# export ANT_OPTS='-Dant.logger.defaults=$HOME/.ant-colors'
-
 # Tmux
 source "${CONFIG_ROOT}/tmux/tmux-completion.bash"
 
@@ -178,24 +136,4 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 
 # bat (cat clone)
-export BAT_THEME="Solarized (light)"
-
-# Pipenv completion
-hash pipenv 2> /dev/null && eval "$(pipenv --completion)"
-
-# NPM completion
-hash npm 2> /dev/null && eval "$(npm completion)"
-
-# Add Rust to PATH
-if [ -f "$HOME/.cargo/env" ]; then
-    source "$HOME/.cargo/env"
-    eval "$(rustup completions bash)"
-    eval "$(rustup completions bash cargo)"
-fi
-
-# Thefuck completion
-hash thefuck 2> /dev/null && eval "$(thefuck --alias)"
-
-# Tabs size in terminal
-tabs -4
-export LESS=Rx4
+export BAT_THEME="Solarized (dark)"

@@ -4,6 +4,7 @@
   "python.linting.enabled": true,
   "python.formatting.provider": "black",
   "coc.preferences.formatOnSaveFiletypes": [
+    "python",
     "rust",
     "json",
     "javascript",

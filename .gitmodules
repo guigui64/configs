@@ -53,3 +53,6 @@
 [submodule "gnome-terminal/Gogh"]
 	path = gnome-terminal/Gogh
 	url = https://github.com/Mayccoll/Gogh.git
+[submodule "vim/pack/plugins/start/typescript-vim"]
+	path = vim/pack/plugins/start/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim

@@ -48,6 +48,7 @@ if [ ! -z "$WORKENV" ] ; then
     alias simtgCorbaPids='pgrep simtgCorba'
     alias sourceSimtgEnv='source ~/git/scripts/envSimTG.sh'
 
+    # PROXY
     alias pip3installtonga='pip3 install --user --trusted-host tonga.tls.fr.astrium.corp -i https://tonga.tls.fr.astrium.corp/nexus3/repository/pip-public/simple'
     alias pipenvtonga='pipenv --pypi-mirror https://tonga.tls.fr.astrium.corp/nexus3/repository/pip-public/simple'
 

@@ -27,3 +27,14 @@ fif() {
   fi
   rg --files-with-matches --no-messages "$1" | fzf $FZF_PREVIEW_WINDOW --preview "rg --ignore-case --pretty --context 10 '$1' {}"
 }
+
+# if WORKENV is set
+if [ ! -z "$WORKENV" ] ; then
+
+    # MOBA
+    moba-gnome-terminal() {
+        /usr/lib/gnome-terminal/gnome-terminal-server --app-id moba.Terminal &
+        gnome-terminal --app-id moba.Terminal
+    }
+
+fi

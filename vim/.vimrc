@@ -87,6 +87,14 @@ set splitbelow " for :split
 
 " }}}
 
+" NERDTree settings {{{
+
+let NERDTreeShowHidden = 1 " Show hidden files at startup
+" auto refresh tree when writing a file
+autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
+
+" }}}
+
 " Search settings {{{
 
 nnoremap / /\v
@@ -126,6 +134,7 @@ nnoremap k gk
 
 " tree
 noremap <leader>tt :NERDTreeToggle<CR>
+noremap <leader>tr :NERDTreeRefreshRoot<CR>
 
 " tagbar
 noremap <leader>tgb :TagbarToggle<CR>

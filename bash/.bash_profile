@@ -33,7 +33,7 @@ bind -m vi-insert "\C-l":clear-screen
 export JAVA_HOME=/usr/java/default
 
 # PATH
-export PATH=$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/git/scripts:$JAVA_HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/git/scripts:$JAVA_HOME/bin:$PATH:/usr/local/go/bin
 
 # VIM
 export VISUAL=vim
@@ -60,6 +60,12 @@ if [ -f "$HOME/.cargo/env" ]; then
     source "$HOME/.cargo/env"
     eval "$(rustup completions bash)"
     eval "$(rustup completions bash cargo)"
+fi
+
+# Go
+if [ -d "$HOME/go" ]; then
+    export GOPATH="$HOME/go"
+    export PATH=$PATH:$GOPATH/bin
 fi
 
 # Thefuck completion

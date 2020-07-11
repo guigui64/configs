@@ -2,6 +2,8 @@
 
 # ~/.bash_profile: executed by bash for login shells
 
+export TERM=xterm-256color
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth

@@ -91,12 +91,14 @@ set splitbelow " for :split
 
 let NERDTreeShowHidden = 1 " Show hidden files at startup
 " auto refresh tree when writing a file
-function! AutoRefreshNERDTree()
-    if exists("g:NERDTree") && g:NERDTree.IsOpen()
-        NERDTreeFocus | execute 'normal R' | wincmd p
+function! NERDTreeAutoRefresh()
+    if exists('g:NERDTree') && g:NERDTree.IsOpen()
+        NERDTreeFocus
+        execute 'normal R'
+        wincmd p
     endif
 endfunction
-autocmd BufWritePost * call AutoRefreshNERDTree()
+autocmd BufWritePost * call NERDTreeAutoRefresh()
 
 " }}}
 

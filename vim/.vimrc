@@ -127,8 +127,10 @@ augroup END
 " Auto source .vimrc file when edited
 autocmd! BufWritePost .vimrc source %
 
+" Templates
 augroup templates
-    autocmd BufNewFile *.pl execute "0r ~/.vim/templates/skeleton.pl" | normal G
+  autocmd!
+  autocmd BufNewFile *.tsx 0r ~/.vim/templates/skeleton.tsx
 augroup END
 
 " }}}

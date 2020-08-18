@@ -50,10 +50,10 @@ export ANT_ARGS='-logger org.apache.tools.ant.listener.AnsiColorLogger'
 # export ANT_OPTS='-Dant.logger.defaults=$HOME/.ant-colors'
 
 # Pipenv completion
-hash pipenv 2> /dev/null && eval "$(pipenv --completion)"
+hash pipenv 2> /dev/null && alias complete_pipenv='eval "$(pipenv --completion)"'
 
 # NPM completion
-hash npm 2> /dev/null && eval "$(npm completion)"
+hash npm 2> /dev/null && alias complete_npm='eval "$(npm completion)"'
 
 # Add Rust to PATH
 if [ -f "$HOME/.cargo/env" ]; then

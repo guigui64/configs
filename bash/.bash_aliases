@@ -13,6 +13,9 @@ alias clock='tty-clock -sc -C 6'
 alias wtree="while true; do clear ; tree -a -I 'generation|bin|build|__pycache__|node_modules|.git|*.swp' ; sleep 5 ; done"
 alias fd='fdfind'
 alias rscp='rsync -avzh --info=progress2'
+alias afab='ant -f ant/build.xml'
+alias pyva='source venv/bin/activate'
+alias pyvd='deactivate'
 
 # Clipboard
 alias pbcopy='xclip -selection clipboard'
@@ -36,9 +39,6 @@ alias wgs='while (true) ; do clear ; git status ; sleep 5 ; done'
 alias gka='gitk --all'
 alias forgit='source ~/git/configs/git/forgit/forgit.plugin.sh'
 
-# Go
-alias cdgosrcs='cd golang/nonstd/src/github.com/guigui64/'
-
 # if WORKENV is set
 if [ ! -z "$WORKENV" ] ; then
 
@@ -46,11 +46,10 @@ if [ ! -z "$WORKENV" ] ; then
     alias simgdb='for core in `ls -t core*`; do echo "### Debug with core : $core ###"; gdb /tools/simtg/simtg/Ubuntu_16.04/64bit/simtg_2.11.0/simtgCorba $core; break; done;'
     alias cachefree='free -h && sync && sudo sh -c "echo 3 > /proc/sys/vm/drop_caches" && free -h'
     alias simtgCorbaPids='pgrep simtgCorba'
-    alias sourceSimtgEnv='source ~/git/scripts/envSimTG.sh'
 
     # PROXY
-    alias pip3installtonga='pip3 install --user --trusted-host tonga.tls.fr.astrium.corp -i https://tonga.tls.fr.astrium.corp/nexus3/repository/pip-public/simple'
-    alias pipenvtonga='pipenv --pypi-mirror https://tonga.tls.fr.astrium.corp/nexus3/repository/pip-public/simple'
+    alias pipenvsimforge='pipenv --pypi-mirror https://simforge.tls.fr.astrium.corp/nexus/repository/pip/simple'
+    alias proxy='source ~/git/scripts/proxy.sh'
 
 else
 

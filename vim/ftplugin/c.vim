@@ -10,3 +10,4 @@ set textwidth=100
 " augroup END
 
 nnoremap <leader>cl :! clang -Wall -Werror -Wextra -std=c99 %<CR>
+iabbrev tracedebug fprintf(stderr, "%s:%d\n", __FUNCTION__, __LINE__);

@@ -149,7 +149,7 @@ noremap <leader>tr :NERDTreeRefreshRoot<CR>
 noremap <leader>tgb :TagbarToggle<CR>
 
 " save
-nnoremap <leader>s :update<CR>
+nnoremap <leader>x :update<CR>
 
 function! ToggleNumbers()
     if (&relativenumber == 1)
@@ -252,6 +252,7 @@ iabbrev adn     and
 iabbrev teh     the
 iabbrev uint    uint32_t
 iabbrev unint   uint32_t
+iabbrev conts   const
 
 " }}}
 
@@ -277,5 +278,16 @@ highlight SpecialKey ctermfg=14 ctermbg=NONE
 let g:airline_theme = 'gruvbox'
 let g:airline#extensions#obsession#enabled = 1
 autocmd VimEnter * AirlineRefresh
+
+" }}}
+
+" Plugins settings {{{
+
+" closetags
+let g:closetag_filetypes = 'html,xhtml,phtml,javascript.jsx,typescript.tsx'
+let g:closetag_regions = {
+            \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+            \ 'javascript.jsx': 'jsxRegion',
+            \ }
 
 " }}}

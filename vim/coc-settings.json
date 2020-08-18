@@ -22,5 +22,6 @@
       "filetypes": ["go"],
       "initializationOptions": { "usePlaceholders": true }
     }
-  }
+  },
+  "http.proxyStrictSSL": false
 }

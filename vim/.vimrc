@@ -278,6 +278,9 @@ highlight SpecialKey ctermfg=14 ctermbg=NONE
 let g:airline_theme = 'gruvbox'
 let g:airline#extensions#obsession#enabled = 1
 autocmd VimEnter * AirlineRefresh
+let g:airline_section_y = '%{airline#util#prepend("",0)}%{airline#util#prepend(airline#extensions#tagbar#currenttag(),0)}%{airline#util#prepend("",0)}%{airline#util#prepend("",0)}%{airline#util#prepend("",0)}%{airline#util#wrap(airline#parts#filetype(),0)}'
+let g:airline_section_x = ''
+let g:airline_section_z = '%p%% %l:%c'
 
 " }}}
 

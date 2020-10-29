@@ -250,8 +250,7 @@ command! -nargs=0 Format :call CocAction('format')
 
 iabbrev adn     and
 iabbrev teh     the
-iabbrev uint    uint32_t
-iabbrev unint   uint32_t
+iabbrev unint   uint
 iabbrev conts   const
 
 " }}}
@@ -269,6 +268,8 @@ au BufNewFile,BufRead Jenkinsfile setf groovy
 set background=dark
 set termguicolors
 autocmd VimEnter * colorscheme gruvbox
+" Transparent background
+autocmd VimEnter * highlight Normal ctermbg=NONE guibg=NONE
 " Change SpecialKey settings (tabs) after loading all plugins (VimEnter cheat)
 autocmd VimEnter * highlight clear SpecialKey | highlight SpecialKey ctermfg=14 ctermbg=NONE
 " call it again in case reloading vimrc

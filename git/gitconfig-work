@@ -31,3 +31,5 @@
     tool = vimdiff
 [merge]
     tool = vimdiff
+[url "git@simforge.tls.fr.astrium.corp:"]
+	insteadOf = https://simforge.tls.fr.astrium.corp/

@@ -131,6 +131,7 @@ autocmd! BufWritePost .vimrc source %
 augroup templates
   autocmd!
   autocmd BufNewFile *.tsx 0r ~/.vim/templates/skeleton.tsx
+  autocmd BufNewFile *.py 0r ~/.vim/templates/skeleton.py
 augroup END
 
 " }}}

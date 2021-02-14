@@ -59,3 +59,10 @@
 [submodule "vim/pack/plugins/start/vim-go"]
 	path = vim/pack/plugins/start/vim-go
 	url = https://github.com/fatih/vim-go
+[submodule "vim/pack/plugins/start/yats.vim"]
+	path = vim/pack/plugins/start/yats.vim
+	url = https://github.com/HerringtonDarkholme/yats.vim.git
+[submodule "vim/pack/plugins/start/vim-svelte"]
+	path = vim/pack/plugins/start/vim-svelte
+	url = https://github.com/evanleck/vim-svelte.git
+	branch = main

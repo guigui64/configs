@@ -23,6 +23,7 @@
     gpgsign = true
 [diff]
     tool = vimdiff
+	submodule = log
 [merge]
     tool = vimdiff
 [credential]

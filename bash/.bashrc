@@ -137,3 +137,6 @@ export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 
 # bat (cat clone)
 export BAT_THEME="Solarized (dark)"
+
+# pip
+export PYTHONWARNINGS="once:Unverified HTTPS request"

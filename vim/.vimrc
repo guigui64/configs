@@ -68,9 +68,9 @@ set ttyfast " Rendering
 set undofile
 
 " Backup directories
-set backupdir=.backup/,~/.backup/,/tmp//
-set directory=.swp/,~/.swp/,/tmp//
-set undodir=.undo/,~/.undo/,/tmp//
+set backupdir=.backup/,~/.backup/,~/tmp/vim/
+set directory=.swp/,~/.swp/,~/tmp/vim/
+set undodir=.undo/,~/.undo/,~/tmp/vim/
 
 " Pick a leader key : \ being the default one
 let mapleader = ","
@@ -199,7 +199,7 @@ nnoremap <left>     <nop>
 noremap <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " save with leader s
-noremap <leader>s :update<CR>
+noremap <leader>u :update<CR>
 
 " save without format or any aucmd
 noremap <leader>zs :noa w<CR>
@@ -253,6 +253,8 @@ iabbrev adn     and
 iabbrev teh     the
 iabbrev unint   uint
 iabbrev conts   const
+
+cnoreabbrev vds vertical diffsplit
 
 " }}}
 

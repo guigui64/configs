@@ -1,9 +1,7 @@
-import React, { FC } from "react";
+import React from "react";
 
-type NAMEProps = {};
-
-const NAME: FC<NAMEProps> = (props) => {
-  CONTENT
+const NAME = () => {
+  CONTENT;
 };
 
 export default NAME;

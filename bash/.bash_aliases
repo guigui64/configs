@@ -1,6 +1,7 @@
 # vim: filetype=bash
 
 alias :q='exit'
+alias xo='xdg-open'
 
 alias df='df -Th --total'
 alias du='du -h'
@@ -11,7 +12,7 @@ alias lessn='less -N'
 alias asl='awk '\''{ print $NF }'\'' | sed '\''s/*//'\'' | xargs less'
 alias clock='tty-clock -sc -C 6'
 alias wtree="while true; do clear ; tree -a -I 'generation|bin|build|__pycache__|node_modules|.git|*.swp' ; sleep 5 ; done"
-alias rscp='rsync -avzh --info=progress2'
+alias rscp='rsync -azh --info=progress2'
 alias afab='ant -f ant/build.xml -Dcomparg_Wno-deprecated=true'
 alias pyva='source venv/bin/activate'
 alias pyvd='deactivate'
@@ -49,6 +50,7 @@ if [ ! -z "$WORKENV" ] ; then
     # PROXY
     alias pipenvsimforge='pipenv --pypi-mirror https://simforge.tls.fr.astrium.corp/nexus/repository/pip/simple'
     alias proxy='source ~/git/scripts/proxy.sh'
+    alias piproxy='source ~/git/scripts/piproxy.sh'
 
     # SSH
     alias gogotham='ssh -X comte_g@gotham'

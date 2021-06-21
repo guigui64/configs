@@ -68,9 +68,9 @@ set ttyfast " Rendering
 set undofile
 
 " Backup directories
-set backupdir=.backup/,~/.backup/,~/tmp/vim/
-set directory=.swp/,~/.swp/,~/tmp/vim/
-set undodir=.undo/,~/.undo/,~/tmp/vim/
+set backupdir=.backup/,~/.backup/,~/tmp/vim/,/tmp/
+set directory=.swp/,~/.swp/,~/tmp/vim/,/tmp/
+set undodir=.undo/,~/.undo/,~/tmp/vim/,/tmp/
 
 " Pick a leader key : \ being the default one
 let mapleader = ","

@@ -1,7 +1,6 @@
 # vim: filetype=bash
 
 alias :q='exit'
-alias xo='xdg-open'
 
 alias df='df -Th --total'
 alias du='du -h'

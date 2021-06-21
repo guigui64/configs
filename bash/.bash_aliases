@@ -16,6 +16,7 @@ alias rscp='rsync -azh --info=progress2'
 alias afab='ant -f ant/build.xml -Dcomparg_Wno-deprecated=true'
 alias pyva='source venv/bin/activate'
 alias pyvd='deactivate'
+alias xo='xdg-open'
 
 # Clipboard
 alias pbcopy='xclip -selection clipboard'

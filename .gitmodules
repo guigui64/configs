@@ -1,65 +1,6 @@
-[submodule "vim/pack/plugins/start/vim-airline"]
-	path = vim/pack/plugins/start/vim-airline
-	url = https://github.com/vim-airline/vim-airline
-[submodule "vim/pack/plugins/start/vim-airline-themes"]
-	path = vim/pack/plugins/start/vim-airline-themes
-	url = https://github.com/vim-airline/vim-airline-themes.git
-[submodule "vim/pack/plugins/start/vim-surround"]
-	path = vim/pack/plugins/start/vim-surround
-	url = https://github.com/tpope/vim-surround.git
-[submodule "vim/pack/plugins/start/vim-fugitive"]
-	path = vim/pack/plugins/start/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vim/pack/plugins/start/vim-sensible"]
-	path = vim/pack/plugins/start/vim-sensible
-	url = https://github.com/tpope/vim-sensible.git
-[submodule "vim/pack/plugins/start/nerdtree"]
-	path = vim/pack/plugins/start/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/pack/plugins/start/vim-commentary"]
-	path = vim/pack/plugins/start/vim-commentary
-	url = https://github.com/tpope/vim-commentary.git
-[submodule "vim/pack/plugins/start/fzf"]
-	path = vim/pack/plugins/start/fzf
-	url = https://github.com/junegunn/fzf.vim
-[submodule "vim/pack/plugins/start/vim-obsession"]
-	path = vim/pack/plugins/start/vim-obsession
-	url = https://github.com/tpope/vim-obsession.git
-[submodule "vim/pack/plugins/start/tmux-complete.vim"]
-	path = vim/pack/plugins/start/tmux-complete.vim
-	url = https://github.com/wellle/tmux-complete.vim.git
-[submodule "vim/pack/plugins/start/tagbar"]
-	path = vim/pack/plugins/start/tagbar
-	url = https://github.com/majutsushi/tagbar
-[submodule "vim/pack/plugins/start/vimagit"]
-	path = vim/pack/plugins/start/vimagit
-	url = https://github.com/jreybert/vimagit.git
-[submodule "vim/pack/plugins/start/rust"]
-	path = vim/pack/plugins/start/rust
-	url = https://github.com/rust-lang/rust.vim
-[submodule "vim/pack/plugins/start/vim-solarized8"]
-	path = vim/pack/plugins/start/vim-solarized8
-	url = https://github.com/lifepillar/vim-solarized8
 [submodule "git/forgit"]
 	path = git/forgit
 	url = https://github.com/wfxr/forgit
-[submodule "vim/pack/plugins/start/coc.nvim"]
-	path = vim/pack/plugins/start/coc.nvim
-	url = https://github.com/neoclide/coc.nvim.git
-	branch = release
-[submodule "vim/pack/plugins/start/gruvbox"]
-	path = vim/pack/plugins/start/gruvbox
-	url = https://github.com/morhetz/gruvbox.git
 [submodule "gnome-terminal/Gogh"]
 	path = gnome-terminal/Gogh
 	url = https://github.com/Mayccoll/Gogh.git
-[submodule "vim/pack/plugins/start/vim-go"]
-	path = vim/pack/plugins/start/vim-go
-	url = https://github.com/fatih/vim-go
-[submodule "vim/pack/plugins/start/yats.vim"]
-	path = vim/pack/plugins/start/yats.vim
-	url = https://github.com/HerringtonDarkholme/yats.vim.git
-[submodule "vim/pack/plugins/start/vim-svelte"]
-	path = vim/pack/plugins/start/vim-svelte
-	url = https://github.com/evanleck/vim-svelte.git
-	branch = main

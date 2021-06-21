@@ -87,6 +87,37 @@ set splitbelow " for :split
 
 " }}}
 
+" Plugins {{{
+
+call plug#begin('~/.vim/plugged')
+
+" Utilities
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
+Plug 'wellle/tmux-complete.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+
+" LSP + Languages
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'alvan/vim-closetag'
+
+" UI
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+
+call plug#end()
+
+" }}}
+
 " NERDTree settings {{{
 
 let NERDTreeShowHidden = 1 " Show hidden files at startup
@@ -282,7 +313,7 @@ highlight SpecialKey ctermfg=14 ctermbg=NONE
 let g:airline_theme = 'gruvbox'
 let g:airline#extensions#obsession#enabled = 1
 autocmd VimEnter * AirlineRefresh
-let g:airline_section_y = '%{airline#util#prepend("",0)}%{airline#util#prepend(airline#extensions#tagbar#currenttag(),0)}%{airline#util#prepend("",0)}%{airline#util#prepend("",0)}%{airline#util#prepend("",0)}%{airline#util#wrap(airline#parts#filetype(),0)}'
+let g:airline_section_y = '%{airline#util#wrap(airline#parts#filetype(),0)}'
 let g:airline_section_x = ''
 let g:airline_section_z = '%p%% %l:%c'
 

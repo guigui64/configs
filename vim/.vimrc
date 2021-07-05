@@ -107,6 +107,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'alvan/vim-closetag'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
 " UI
 Plug 'morhetz/gruvbox'

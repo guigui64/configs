@@ -1,0 +1,48 @@
+#!/usr/bin/bash
+
+# path
+export PATH=${HOME}/git/scripts:$PATH
+
+# simenv
+TARGET_DEP="Ubuntu_20.04/64bit"
+GEN_TARGET_DEP="Linux/64bit"
+# Dependencies Locations
+export DEPS_CACHE=${HOME}/airbus/DEPS_CACHE
+echo -e "DEPS_CACHE ➡ ${DEPS_CACHE}"
+export ACE_ROOT=${DEPS_CACHE}/${TARGET_DEP}/ACE-TAO/6.5.9
+echo -e "ACE_ROOT ➡ ${ACE_ROOT}"
+export TAO_ROOT=${ACE_ROOT}
+echo -e "TAO_ROOT ➡ ${TAO_ROOT}"
+export XERCESCROOT=${DEPS_CACHE}/${TARGET_DEP}/xerces-c/3.1.2
+echo -e "XERCESCROOT ➡ ${XERCESCROOT}"
+export XERCES_ROOT=${XERCESCROOT}
+echo -e "XERCES_ROOT ➡ ${XERCES_ROOT}"
+export ZMQ_ROOT=${DEPS_CACHE}/${TARGET_DEP}/zeromq/4.0.3
+echo -e "ZMQ_ROOT ➡ ${ZMQ_ROOT}"
+export XSD_ROOT=${DEPS_CACHE}/${GEN_TARGET_DEP}/xsd/4.0.0
+echo -e "XSD_ROOT ➡ ${XSD_ROOT}"
+export PROTOBUF_ROOT=${DEPS_CACHE}/${TARGET_DEP}/protobuf/3.0.0
+echo -e "PROTOBUF_ROOT ➡ ${PROTOBUF_ROOT}"
+export JUNIT_ROOT=${DEPS_CACHE}/All/junit/4.8.2
+echo -e "JUNIT_ROOT ➡ ${JUNIT_ROOT}"
+export PYTHON_ROOT=/usr/bin
+echo -e "PYTHON_ROOT ➡ ${PYTHON_ROOT}"
+# Fake mounting points
+export SIMTG_INSTALL_ROOT=${HOME}/airbus/tools/simtg
+echo -e "SIMTG_INSTALL_ROOT ➡ ${SIMTG_INSTALL_ROOT}"
+export MODELS_INSTALL_ROOT=${HOME}/airbus/models
+echo -e "MODELS_INSTALL_ROOT ➡ ${MODELS_INSTALL_ROOT}"
+export PROJECTS_INSTALL_ROOT=${HOME}/airbus/projects
+echo -e "PROJECTS_INSTALL_ROOT ➡ ${PROJECTS_INSTALL_ROOT}"
+export HYBRID_INSTALL_ROOT=${HOME}/airbus/hybrid
+echo -e "HYBRID_INSTALL_ROOT ➡ ${HYBRID_INSTALL_ROOT}"
+# Export PATH
+export PATH=${TAO_ROOT}/bin:${ACE_ROOT}/bin:${ZMQ_ROOT}/bin:${PATH}
+# Export LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=${TAO_ROOT}/lib:${ACE_ROOT}/lib:${XERCESCROOT}/lib:${XSD_ROOT}/lib:${PROTOBUF_ROOT}/lib:${ZMQ_ROOT}/lib:${LD_LIBRARY_PATH}
+export SIMTG_LOCAL_ROOT=${HOME}/work
+echo -e "SIMTG_LOCAL_ROOT ➡ ${SIMTG_LOCAL_ROOT}"
+export SIMANT_CACHE=${HOME}/airbus/SIMANT_CACHE
+echo -e "SIMANT_CACHE ➡ ${SIMANT_CACHE}"
+export SIM_MODULE=${HOME}/airbus/.sim_modules
+echo -e "SIM_MODULE ➡ ${SIM_MODULE}"

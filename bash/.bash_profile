@@ -33,7 +33,7 @@ bind -m vi-insert "\C-l":clear-screen
 export JAVA_HOME=$HOME/java/default
 
 # PATH
-export PATH=$HOME/.local/bin:$HOME/git/scripts:$JAVA_HOME/bin:$PATH:/usr/local/go/bin
+export PATH=$HOME/.local/bin:$HOME/git/configs/bin:$JAVA_HOME/bin:$PATH:/usr/local/go/bin
 
 # VIM
 export VISUAL=vim

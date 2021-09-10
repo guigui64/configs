@@ -1,0 +1,28 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "python",
+    "rust",
+    "json",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "diagnostic-languageserver.filetypes": {
+    "sh": "shellcheck",
+    "python": "flake8"
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "python": ["black", "isort"]
+  },
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      "initializationOptions": { "usePlaceholders": true }
+    }
+  },
+  "http.proxyStrictSSL": false,
+  "java.home": "~/java/java-16-openjdk-amd64"
+}

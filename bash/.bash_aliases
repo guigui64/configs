@@ -44,6 +44,7 @@ alias forgit='source ~/git/configs/git/forgit/forgit.plugin.sh'
 if [ ! -z "$WORKENV" ] ; then
 
     # SIMTG
+    alias simenv='source ~/git/scripts/envSimTG.sh'
     alias simgdb='for core in `ls -t core*`; do echo "### Debug with core : $core ###"; gdb /tools/simtg/simtg/Ubuntu_16.04/64bit/simtg_2.11.0/simtgCorba $core; break; done;'
     alias cachefree='free -h && sync && sudo sh -c "echo 3 > /proc/sys/vm/drop_caches" && free -h'
     alias simtgCorbaPids='pgrep simtgCorba'

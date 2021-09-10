@@ -47,8 +47,4 @@ if [ ! -z "$WORKENV" ] ; then
         gnome-terminal --app-id moba.Terminal
     }
 
-    simenv() {
-        WORKSPACE=~/work source ~/git/scripts/envSimTG.sh
-    }
-
 fi

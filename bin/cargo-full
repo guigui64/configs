@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cargo clean && cargo build --all-features && cargo test --all-features && cargo fmt --all -- --check && cargo clippy -- -D warnings

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+current=$(basename "$(ls -l "$HOME/.gitconfig" | awk '{ print $NF }')")
+if [[ "$current" == "gitconfig-home" ]]; then
+    echo "Switching to work profile"
+    ln -sf "$HOME/git/configs/git/gitconfig-work" "$HOME/.gitconfig"
+else
+    echo "Switching to home profile"
+    ln -sf "$HOME/git/configs/git/gitconfig-home" "$HOME/.gitconfig"
+fi

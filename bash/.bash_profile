@@ -30,7 +30,7 @@ set -o vi
 bind -m vi-insert "\C-l":clear-screen
 
 # Java
-export JAVA_HOME=/usr/java/default
+export JAVA_HOME=$HOME/java/default
 
 # PATH
 export PATH=$HOME/.local/bin:$HOME/git/scripts:$JAVA_HOME/bin:$PATH:/usr/local/go/bin
@@ -82,5 +82,3 @@ if [ -n "$BASH_VERSION" ]; then
         . "$HOME/.bashrc"
     fi
 fi
-
-export PATH="$HOME/.cargo/bin:$PATH"

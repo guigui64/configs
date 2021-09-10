@@ -1,8 +1,4 @@
 {
-  "python.linting.pylintEnabled": false,
-  "python.linting.flake8Enabled": true,
-  "python.linting.enabled": true,
-  "python.formatting.provider": "black",
   "coc.preferences.formatOnSaveFiletypes": [
     "python",
     "rust",
@@ -13,7 +9,11 @@
     "typescriptreact"
   ],
   "diagnostic-languageserver.filetypes": {
-    "sh": "shellcheck"
+    "sh": "shellcheck",
+    "python": "flake8"
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "python": ["black", "isort"]
   },
   "languageserver": {
     "golang": {
@@ -23,5 +23,7 @@
       "initializationOptions": { "usePlaceholders": true }
     }
   },
-  "http.proxyStrictSSL": false
+  "http.proxyStrictSSL": false,
+  "java.home": "~/java/jdk-16.0.2",
+  "java.jdt.ls.home": "/home/comte/java/jdt.ls"
 }

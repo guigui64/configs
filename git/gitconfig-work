@@ -13,6 +13,7 @@
     changelog = log --format=%s --reverse
 [core]
     editor = vim
+	autocrlf = false
 [push]
     default = simple
 [user]

@@ -85,6 +85,9 @@ noremap <leader>l :set list!<CR>
 set splitright " for :vsplit
 set splitbelow " for :split
 
+" grep: rg
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow
+
 " }}}
 
 " Plugins {{{
@@ -107,7 +110,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'alvan/vim-closetag'
-Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
 " UI
 Plug 'morhetz/gruvbox'
@@ -256,6 +258,8 @@ nmap <silent> gd :<C-u>call CocActionAsync('jumpDefinition')<CR>
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>cf <Plug>(coc-format)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -270,9 +274,6 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -323,9 +324,9 @@ let g:airline_section_z = '%p%% %l:%c'
 " Plugins settings {{{
 
 " closetags
-let g:closetag_filetypes = 'html,xhtml,phtml,javascript.jsx,typescript.tsx'
+let g:closetag_filetypes = 'html,xhtml,phtml,javascript.jsx,typescriptreact'
 let g:closetag_regions = {
-            \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+            \ 'typescriptreact': 'jsxRegion,tsxRegion',
             \ 'javascript.jsx': 'jsxRegion',
             \ }
 

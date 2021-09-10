@@ -13,6 +13,7 @@ alias clock='tty-clock -sc -C 6'
 alias wtree="while true; do clear ; tree -a -I 'generation|bin|build|__pycache__|node_modules|.git|*.swp' ; sleep 5 ; done"
 alias rscp='rsync -azh --info=progress2'
 alias afab='ant -f ant/build.xml -Dcomparg_Wno-deprecated=true'
+alias pyve='python -mvenv --system-site-packages venv'
 alias pyva='source venv/bin/activate'
 alias pyvd='deactivate'
 alias xo='xdg-open'

@@ -75,6 +75,9 @@ hash thefuck 2> /dev/null && eval "$(thefuck --alias)"
 tabs -4
 export LESS=Rx4
 
+# Python SSL
+export REQUESTS_CA_BUNDLE="/etc/ssl/certs/ca-certificates.crt"
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists

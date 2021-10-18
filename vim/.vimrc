@@ -100,6 +100,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'wellle/tmux-complete.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'rbong/vim-flog'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -113,6 +114,7 @@ Plug 'alvan/vim-closetag'
 
 " UI
 Plug 'morhetz/gruvbox'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -195,7 +197,7 @@ function! ToggleNumbers()
         set rnu
     endif
 endfunc
-noremap <C-n> :call ToggleNumbers()<CR>
+noremap <leader>nn :call ToggleNumbers()<CR>
 
 " Quickfix
 map <C-l> :cnext<CR>
@@ -260,6 +262,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>cf <Plug>(coc-format)
+nmap <leader>o :CocList outline<CR>
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -277,6 +280,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
+
+" nmap <leader>
 
 " }}}
 
@@ -301,9 +306,9 @@ au BufNewFile,BufRead Jenkinsfile setf groovy
 " Looks {{{
 
 " Color scheme
-set background=dark
+set background=light
 set termguicolors
-autocmd VimEnter * colorscheme gruvbox
+autocmd VimEnter * colorscheme PaperColor
 " Transparent background
 autocmd VimEnter * highlight Normal ctermbg=NONE guibg=NONE
 " Change SpecialKey settings (tabs) after loading all plugins (VimEnter cheat)
@@ -312,7 +317,7 @@ autocmd VimEnter * highlight clear SpecialKey | highlight SpecialKey ctermfg=14 
 highlight SpecialKey ctermfg=14 ctermbg=NONE
 
 " Airline config
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'papercolor'
 let g:airline#extensions#obsession#enabled = 1
 autocmd VimEnter * AirlineRefresh
 let g:airline_section_y = '%{airline#util#wrap(airline#parts#filetype(),0)}'

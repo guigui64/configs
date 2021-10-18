@@ -24,5 +24,6 @@
     }
   },
   "http.proxyStrictSSL": false,
-  "java.home": "~/java/java-16-openjdk-amd64"
+  "java.home": "~/java/jdk-16.0.2",
+  "java.jdt.ls.home": "/home/comte/java/jdt.ls"
 }
